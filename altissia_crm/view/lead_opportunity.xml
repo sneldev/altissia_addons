@@ -65,8 +65,8 @@
         </record>
 
         <menuitem name="Leads &amp; Opportunities" id="menu_crm_leads_and_opp" parent="sales_team.menu_sales" action="lead_opportunity_act_window" sequence="2" />
-        <menuitem name="Leads" id="crm.menu_crm_leads" parent="sales_team.menu_sales" action="crm.crm_case_category_act_leads_all" sequence="3" />
-        <menuitem name="Opportunities" id="crm.menu_crm_opportunities" parent="sales_team.menu_sales" action="crm.crm_case_category_act_oppor11" sequence="4" />
+        <menuitem name="Leads" id="crm.menu_crm_leads" parent="sales_team.menu_sales" action="crm.crm_lead_all_leads" sequence="3" />
+        <menuitem name="Opportunities" id="crm.menu_crm_opportunities" parent="sales_team.menu_sales" action="crm.crm_lead_opportunities" sequence="4" />
 
     </data>
 </openerp>
