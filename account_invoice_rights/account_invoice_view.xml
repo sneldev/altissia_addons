@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record model="ir.ui.view" id="invoice_form">
+            <field name="name">Invoice Note</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='invoice_open'][1]" position="replace">
+					<button name="invoice_open" states="draft" string="Validate" class="oe_highlight" groups="account.group_account_user"/>
+                </xpath>
+				<xpath expr="//button[@name='invoice_open'][2]" position="replace">
+					<button name="invoice_open" states="proforma2" string="Validate" groups="account.group_account_user"/>
+                </xpath>
+			</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_supplier_form2">
+            <field name="name">account.invoice.supplier.form</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='invoice_open'][1]" position="replace">
+					<button name="invoice_open" states="draft,proforma2" string="Validate" class="oe_highlight" groups="account.group_account_user"/>
+				</xpath>
+        	</field>
+        </record>
+    </data>
+</openerp>
