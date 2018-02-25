@@ -10,11 +10,11 @@
                 <field name="website" position="after">
                     <field name="is_active"/>
                 </field>
-                <xpath expr="//form/sheet/group/field[@name='mobile']" position="after">
+                <!--xpath expr="//form/sheet/group/field[@name='mobile']" position="after">
                     <field name="website" widget="url"/>
                     <field name="lang"/>
                     <field name="bank_ids"/>
-                </xpath>
+                </xpath-->
             </field>
         </record>
 
