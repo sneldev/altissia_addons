@@ -33,8 +33,7 @@ Accountant and Financial Manager can confirm invoices. Invoice & Payment role ca
         'account', 
     ],
     'data': [
-#        "account_invoice_workflow.xml",
-#        "account_invoice_view.xml",
+       "account_invoice_view.xml",
     ],
     'qweb' : [
     ],
