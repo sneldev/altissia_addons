@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="style">
+    body {
+        color: #000 !important;
+        word-wrap: break-word;
+    }
+    .border-black td {
+        border-top: 1px solid black !important;
+    }
+    .table-condensed > thead > tr > th {
+        border-bottom: 1px solid black !important;
+    }
+    .table-condensed > tbody > tr {
+        page-break-inside: avoid !important;
+    }
+    .zero_min_height {
+        min-height: 0px !important;
+    }
+</template>
+
+<template id="external_layout">
+    <!-- Multicompany -->
+    <t t-if="o and 'company_id' in o">
+        <t t-set="company" t-value="o.company_id"></t>
+    </t>
+    <t t-if="not o or not 'company_id' in o">
+        <t t-set="company" t-value="res_company"></t>
+    </t>
+
+    <t t-call="altissia_invoice_layout.external_layout_header" />
+    <t t-raw="0" />
+    <t t-call="altissia_invoice_layout.external_layout_footer" />
+</template>
+
+<template id="external_layout_header">
+    <div class="header">
+        <div class="row">
+            <div class="col-xs-3">
+                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 120px;"/>
+            </div>
+            <div class="col-xs-4 col-xs-offset-5">
+                <h4>
+                    <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice</span>
+                    <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
+                    <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+                    <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
+                    <span t-if="o.type == 'out_refund'">Refund</span>
+                    <span t-if="o.type == 'in_refund'">Supplier Refund</span>
+                    <span t-if="o.type == 'in_invoice'">Supplier Invoice</span>
+                    <span t-field="o.number"/>
+                </h4>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="external_layout_footer">
+    <div class="footer">
+        <div class="text-center" style="padding-bottom:10px">
+            <table style="border: 1px solid black;width:100%;margin-bottom:5px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <t t-if="company.bank_ids">
+                                Payment instructions:<br/>
+                                <p t-foreach="company.bank_ids" t-as="b">
+                                    <t t-if="b.footer">
+                                        <strong>Bank:</strong><span style="padding-right: 10px;" t-field="b.bank_name"/>
+                                        <strong>IBAN:</strong><span style="padding-right: 10px;" t-field="b.acc_number"/>
+                                        <strong>BIC:</strong><span t-field="b.bank_bic"/>
+                                    </t>
+                                </p>
+                                Please mention the invoice reference number in all communication:
+                                <strong><span t-field="o.number"/></strong><br/>
+                                <!--t t-if="o.reference">
+                                    Structured Communication:<strong><span t-field="o.reference"/></strong><br/>
+                                </t-->
+                            </t>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <span style="font-size : xx-small;" t-field="company.invoice_footer"/>
+            </div>
+        </div>
+    </div>
+</template>
+</data>
+</openerp>

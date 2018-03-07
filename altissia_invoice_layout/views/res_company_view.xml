@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="altissia_invoice_res_company_form" model="ir.ui.view">
+            <field name="name">altissia_invoice_layout.res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="priority">16</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <field name="website" position="after">
+                    <field name="invoice_footer"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
