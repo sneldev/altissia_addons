@@ -44,23 +44,26 @@ class CrmLead(Model):
             'res_id': self[0].id or False
         }
 
-    @api.v7
-    def on_change_partner_id(self, cr, uid, ids, partner_id, context=None):
-        result = super(CrmLead, self).on_change_partner_id(cr, uid, ids, partner_id, context)
-        if not partner_id:
+
+    @api.onchange('partner_id')
+    def on_change_partner_id(self):
+        result = super(CrmLead, self)._onchange_partner_id_values(self.partner_id.id if self.partner_id else False)
+        if not self.partner_id:
             return result
 
-        values = result.get('value')
-        partner = self.pool.get('res.partner').browse(cr, uid, partner_id, context=context)
-        values.update({'website': partner.website})
-        result['value'] = values
+
+        partner = self.env['res.partner'].browse(self.partner_id.id)
+        result.update({'website': partner.website})
         return result
 
+
+
     @api.model
-    def _lead_create_contact(self, lead, name, is_company, parent_id=False):
-        partner_id = super(CrmLead, self)._lead_create_contact(lead, name, is_company, parent_id)
-        self.env['res.partner'].browse(partner_id).write({'website': lead.website})
+    def _lead_create_contact(self, name, is_company, parent_id=False):
+        partner_id = super(CrmLead, self)._lead_create_contact(name, is_company, parent_id)
+        self.env['res.partner'].browse(partner_id.id).write({'website': self.website})
         return partner_id
+
 
     @api.model
     def create(self, values):
@@ -68,5 +71,6 @@ class CrmLead(Model):
             crm_stage_rec = self.env['crm.case.stage'].browse(values.get('stage_id'))
             values.update({'probability': crm_stage_rec.probability})
         return super(CrmLead, self).create(values)
+
 
     website = Char('Website', size=64, help="Website of Partner or Company")
