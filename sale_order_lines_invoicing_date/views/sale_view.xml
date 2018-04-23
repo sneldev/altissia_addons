@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_order_form_invoicing_date" model="ir.ui.view">
+            <field name="name">sale.order.invoicing.date.form</field>
+            <field name="model">sale.order</field>
+            <field name="priority">16</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='price_subtotal']" position="after">
+                    <field name="invoice_target_date"/>
+                    <field name="invoice_status" readonly="1"/>
+                    <field name="date_invoice"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_order_tree_invoicing_date" model="ir.ui.view">
+            <field name="name">sale.order.invoicing.date.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <field name="amount_total" position="after">
+                    <field name="total_invoiced"/>
+                    <field name="next_invoice_date"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

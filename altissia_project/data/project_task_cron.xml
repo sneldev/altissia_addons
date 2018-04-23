@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="action_task_stage_done" model="ir.cron">
+            <field name="name">Cron do reset remaining hours of task</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model" eval="'project.task'"/>
+            <field name="function" eval="'action_cron_task_done'"/>
+            <field name="args" eval="'()'"/>
+        </record>
+
+    </data>
+</openerp>

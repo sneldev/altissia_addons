@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+<template id="base.contact">
+    <address t-ignore="true" class="mb0" itemscope="itemscope" itemtype="http://schema.org/Organization">
+        <div t-att-class="'name' not in fields and 'css_non_editable_mode_hidden'">
+            <h4>
+                <t t-esc="object.parent_name"/>
+            </h4>
+            <div>
+                <t t-esc="object.person_name"/>
+            </div>
+            <!--h4 itemprop="name" t-esc="name"/-->
+            <!--t t-esc="object.display_name"/-->
+            <!--t t-esc="display_name2"/-->
+            <!--t t-if="options.get('country_image') and 'country_id' in fields and object.country_id and object.country_id.image">
+                <span t-field="object.country_id.image" t-field-options='{"widget": "image", "class": "country_flag"}'/>
+            </t-->
+        </div>
+        <div itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
+            <div t-if="address and 'address' in fields" class='css_editable_mode_hidden'>
+                <i t-if="not options.get('no_marker')" class='fa fa-map-marker'/> <span itemprop="streetAddress" t-raw="address.replace('\n', options.get('no_tag_br') and ', ' or ('&lt;br/&gt;%s' % ('' if options.get('no_marker') else '&amp;nbsp; &amp;nbsp; ')))"/>
+            </div>
+            <div t-if="city and 'city' in fields" class='css_editable_mode_hidden'>
+                <i t-if="not options.get('no_marker')" class='fa fa-map-marker'/>
+                <span itemprop="addressLocality" t-raw="city"/>,
+                <span itemprop="addressCountry" t-raw="country_id"/>
+            </div>
+            <div t-if="phone and 'phone' in fields" class='css_editable_mode_hidden'><i t-if="not options.get('no_marker')" class='fa fa-phone'/> <span itemprop="telephone" t-esc="phone"/></div>
+            <div t-if="mobile and 'mobile' in fields" class='css_editable_mode_hidden'><i t-if="not options.get('no_marker')" class='fa fa-mobile-phone'/> <span itemprop="telephone" t-esc="mobile"/></div>
+            <div t-if="fax and 'fax' in fields" class='css_editable_mode_hidden'><i t-if="not options.get('no_marker')" class='fa fa-file-text-o'/> <span itemprop="faxNumber" t-esc="fax"/></div>
+            <div t-if="website and 'website' in fields" class='css_editable_mode_hidden'>
+                <i t-if="not options.get('no_marker')" class='fa fa-globe'/>
+                <a t-att-href="website and '%s%s' % ('http://' if '://' not in website else '',website)"><span itemprop="website" t-esc="website"/></a>
+            </div>
+            <div t-if="email and 'email' in fields" class='css_editable_mode_hidden'><i t-if="not options.get('no_marker')" class='fa fa-envelope'/> <span itemprop="email" t-esc="email"/></div>
+        </div>
+    </address>
+</template>
+
+<template id="account.report_invoice_document">
+    <t t-call="altissia_invoice_layout.external_layout">
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id"></t>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"></t>
+        </t>
+        <style>
+            .invoice_thead th {
+                border:1px solid black !important;
+            }
+        </style>
+        <div class="page">
+            <div class="row">
+                <!-- company -->
+                <div name='invoice_address' class="col-xs-5">
+                    <div t-field="company.partner_id" t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+                    <span t-if="company.vat"><strong>VAT:</strong> <span t-field="company.vat_display"/></span><br/>
+                    <span><strong>Email:</strong> accounting@altissia.com</span><br/>
+                    <span><strong>Phone:</strong> +32(0)10.65.72.61</span><br/>
+                </div>
+                <!-- customer -->
+                <div class="col-xs-5 col-xs-offset-1">
+                    <!-- delivery contact address -->
+                    <t t-if="o.use_parent_address == False">
+                    <address t-field="o.delivery_contact_id"
+                     t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+                    </t>
+                    <!-- customer (parent company) -->
+                    <span style="text-decoration: underline;">Invoicing Address</span>
+                    <div t-field="o.partner_id"
+                     t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+
+                    <span t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat_display"/></span>
+                </div>
+            </div>
+
+            <div class="row mt32 mb32">
+                <div class="col-xs-5">
+                    <table class="table table-condensed borderless">
+                        <tbody>
+                            <tr t-if="o.number">
+                                <td><strong>Invoice number:</strong></td>
+                                <td><span t-field="o.number"/></td>
+                            </tr>
+                            <tr t-if="o.name">
+                                <td><strong>Reference:</strong></td>
+                                <td><span t-field="o.name"/></td>
+                            </tr>
+                            <tr t-if="o.date_invoice">
+                                <td><strong>Date:</strong></td>
+                                <td><span t-field="o.date_invoice"/></td>
+                            </tr>
+                            <tr t-if="o.origin">
+                                <td><strong>Source:</strong></td>
+                                <td><span t-field="o.origin"/></td>
+                            </tr>
+                            <tr t-if="o.partner_id.ref">
+                                <td><strong>Customer Code:</strong></td>
+                                <td><span t-field="o.partner_id.ref"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div name="reference" class="col-xs-2 hidden" t-if="o.reference and o.type == 'in_invoice'">
+                        <strong>Reference:</strong>
+                    <p t-field="o.reference"/>
+                </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <table class="table table-condensed">
+                <thead class="invoice_thead" style="border:1px solid black">
+                    <tr>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th class="text-right">Unit Price</th>
+                        <th class="text-right" groups="sale.group_discount_per_so_line">Discount (%)</th>
+                        <th class="text-right">Amount</th>
+                    </tr>
+                </thead>
+                <tbody class="invoice_tbody">
+                    <tr t-foreach="o.invoice_line_ids" t-as="l">
+                        <td><span t-field="l.name"/></td>
+                        <td>
+                            <span t-field="l.quantity"/>
+                            <span t-field="l.uos_id"  groups="product.group_uom"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="l.price_unit"/>
+                        </td>
+                        <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount"/></td>
+                        <td class="text-right">
+                            <span t-if="l.invoice_id.type in ['out_refund']">-</span>
+                            <span t-field="l.price_subtotal"
+                                t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-xs-4">
+                    <p t-if="o.date_due and o.type not in ['out_refund']" style="border:1px solid black">
+                        <strong>To be paid before:</strong> <!-- Payment Term -->
+                        <span t-field="o.date_due"/>
+                    </p>
+                </div>
+                <div class="col-xs-4 col-xs-offset-4 pull-right">
+                    <table class="table table-condensed" style="border:1px solid black">
+                        <tr class="border-black">
+                            <td><strong>Total Excl. VAT</strong></td>
+                            <td class="text-right">
+                                <span t-if="o.type in ['out_refund']">-</span>
+                                <span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Total VAT</td>
+                            <td class="text-right">
+                                <span t-if="o.type in ['out_refund']">-</span>
+                                <span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                            </td>
+                        </tr>
+                        <tr class="border-black">
+                            <td><strong>Total Incl. VAT</strong></td>
+                            <td class="text-right">
+                                 <span t-if="o.type in ['out_refund']">-</span>
+                                 <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <t t-if="o.tax_line_ids">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <!--p t-if="o.date_due" style="border:1px solid black">
+                            <strong>To be paid before:</strong>
+                            <span t-field="o.date_due"/>
+                        </p-->
+                        <table class="table table-condensed" style="border:1px solid black">
+                            <thead>
+                                <tr class="border-black">
+                                    <th>Tax</th>
+                                    <th class="text-right">Base</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.tax_line_ids" t-as="t">
+                                    <td><span t-field="t.name"/></td>
+                                    <td class="text-right">
+                                        <span t-if="o.type in ['out_refund']">-</span>
+                                        <span t-field="t.base"
+                                            t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-if="o.type in ['out_refund']">-</span>
+                                        <span t-field="t.amount"
+                                            t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+            <p style="padding-top: 10px;"></p>
+            <p t-if="o.comment">
+                <strong>Comment:</strong>
+                <span t-field="o.comment"/>
+            </p>
+            <p t-if="o.fiscal_position_id.note">
+                <strong>Fiscal Position Remark:</strong>
+                <span t-field="o.fiscal_position_id.note"/>
+            </p>
+        </div>
+    </t>
+</template>
+
+<template id="report_invoice_altissia" inherit_id="account.report_invoice_document">
+    <xpath expr="//table/tbody[@class='invoice_tbody']" position="replace">
+        <tr t-foreach="o.invoice_line_ids" t-as="l">
+            <td><span t-field="l.name"/></td>
+            <td>
+                <span t-field="l.quantity"/>
+                <span t-field="l.uos_id"  groups="product.group_uom"/>
+            </td>
+            <td class="text-right">
+                <span t-field="l.price_unit"/>
+            </td>
+            <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount"/></td>
+            <!--td class="tex-right">
+                <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
+            </td-->
+            <td class="text-right">
+                <span t-field="l.price_subtotal" 
+                    t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+            </td>
+        </tr>
+    </xpath>
+</template>
+</data>
+</openerp>
+

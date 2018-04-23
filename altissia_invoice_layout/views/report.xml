@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+      <record id="account.account_invoices" model="ir.actions.report.xml">
+		        <field name="paperformat_id" ref="altissia_invoice_layout.paperformat_custom_a4_altissia"/>
+		  </record>
+    </data>
+</openerp>

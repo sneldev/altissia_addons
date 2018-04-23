@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+from odoo import fields, api, models, tools, _
+from vat_display import vat_display
+
+
+class Company(models.Model):
+
+    @api.one
+    @api.depends('vat')
+    def _get_vat_display(self):
+        self.vat_display = self.vat and vat_display(self.vat)
+
+    _inherit = 'res.company'
+    invoice_footer = fields.Text('Invoice Footer', help="ALtissia Custom Invoice Footer")
+    vat_display = fields.Char("Vat Number (display)", compute="_get_vat_display")
