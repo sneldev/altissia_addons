@@ -258,7 +258,7 @@ msgstr "<strong>Commentaire:</strong>"
 #. module: account
 #: model:ir.ui.view,arch_db:account.report_invoice_document
 msgid "<strong>Fiscal Position Remark:</strong>"
-msgstr "<strong>Remarque Position Fiscal:</strong>"
+msgstr "<strong>Remarque Position Fiscale:</strong>"
 
 
 
