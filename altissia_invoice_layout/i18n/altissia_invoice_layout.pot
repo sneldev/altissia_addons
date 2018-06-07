@@ -1,0 +1,261 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* altissia_invoice_layout
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e-20161126\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-30 10:16+0000\n"
+"PO-Revision-Date: 2018-05-30 10:16+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_footer
+msgid "<strong>BIC:</strong>"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_footer
+msgid "<strong>Bank:</strong>"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_footer
+msgid "<strong>IBAN:</strong>"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,help:altissia_invoice_layout.field_res_company_invoice_footer
+msgid "ALtissia Custom Invoice Footer"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model,name:altissia_invoice_layout.model_res_partner_bank
+msgid "Bank Accounts"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
+msgid "Cancelled Invoice"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: code:addons/altissia_invoice_layout/models/account_invoice.py:46
+#, python-format
+msgid "Cannot refund draft/proforma/cancelled invoice."
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: code:addons/altissia_invoice_layout/models/account_invoice.py:48
+#, python-format
+msgid "Cannot refund invoice which is already reconciled, invoice should be unreconciled first. You can only refund this invoice."
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model,name:altissia_invoice_layout.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_invoice_partner_company
+msgid "Customer Company"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.invoice_altissia_invoice_layout_form
+msgid "Delivery address"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_invoice_delivery_contact_id
+msgid "Delivery contact"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
+msgid "Draft Invoice"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model,name:altissia_invoice_layout.model_account_invoice
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
+msgid "Invoice"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_company_invoice_footer
+msgid "Invoice Footer"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model,name:altissia_invoice_layout.model_account_invoice_refund
+msgid "Invoice Refund"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: code:addons/altissia_invoice_layout/models/account_invoice.py:110
+#, python-format
+msgid "Invoice refund"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model,name:altissia_invoice_layout.model_account_journal
+msgid "Journal"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
+msgid "PRO-FORMA"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model,name:altissia_invoice_layout.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_footer
+msgid "Payment instructions:<br/>"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_partner_person_name
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_users_person_name
+msgid "Person Name"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_footer
+msgid "Please mention the invoice reference number in all communication:"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
+msgid "Refund"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_journal_journal_refund_id
+msgid "Refund Journal"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,help:altissia_invoice_layout.field_account_invoice_use_parent_address
+msgid "Select this if you want to use customer's address  information as delivery address"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
+msgid "Supplier Invoice"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
+msgid "Supplier Refund"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_invoice_use_parent_address
+msgid "Use Customer Address for Delivery"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_partner_vat_display
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_users_vat_display
+msgid "Vat Display"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_company_vat_display
+msgid "Vat Number (display)"
+msgstr ""
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.style
+msgid "body {\n"
+"        color: #000 !important;\n"
+"        word-wrap: break-word;\n"
+"    }\n"
+"    .border-black td {\n"
+"        border-top: 1px solid black !important;\n"
+"    }\n"
+"    .table-condensed &gt; thead &gt; tr &gt; th {\n"
+"        border-bottom: 1px solid black !important;\n"
+"    }\n"
+"    .table-condensed &gt; tbody &gt; tr {\n"
+"        page-break-inside: avoid !important;\n"
+"    }\n"
+"    .zero_min_height {\n"
+"        min-height: 0px !important;\n"
+"    }"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<span style=\"text-decoration: underline;\">Invoicing Address</span>"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>VAT:</strong>"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<br/>\n"
+"                    <span><strong>Email:</strong> accounting@altissia.com</span><br/>\n"
+"                    <span><strong>Phone:</strong> +32(0)10.65.72.61</span><br/>"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "VAT:"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>Invoice number:</strong>"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>Customer Code:</strong>"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>To be paid before:</strong>"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>Total Excl. VAT</strong>"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>Total Incl. VAT</strong>"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "Total VAT"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>Comment:</strong>"
+msgstr ""
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>Fiscal Position Remark:</strong>"
+msgstr ""
+
+

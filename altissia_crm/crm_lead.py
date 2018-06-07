@@ -18,11 +18,23 @@
 #
 ##############################################################################
 from openerp.fields import Char
+from openerp.fields import Boolean
 from openerp.models import Model, api, _
 
 
 class CrmLead(Model):
     _inherit = 'crm.lead'
+
+    def compute_lost_visible(self):
+        for rec in self:
+            if rec.stage_id.name == 'Lost':
+                rec.lost_visible = True
+
+    @api.multi
+    def action_set_lost(self):
+        """ Lost semantic: probability = 0, active = False """
+        lost_stage = self.env['crm.stage'].search([('name','=','Lost')])[0]
+        return self.write({'probability': 0,'stage_id':lost_stage.id})
 
     @api.multi
     def open_form_view(self):
@@ -74,3 +86,4 @@ class CrmLead(Model):
 
 
     website = Char('Website', size=64, help="Website of Partner or Company")
+    lost_visible = Boolean(default=False ,compute='compute_lost_visible',store=False)
