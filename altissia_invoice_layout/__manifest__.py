@@ -16,6 +16,7 @@ Customizations for invoicing.
     'data': [
         'views/res_company_view.xml',
         'data/custom_paperformat.xml',
+        'data/automate_refund_journal.xml',
         'views/report.xml',
         'views/layouts.xml',
         'views/report_invoice.xml',
