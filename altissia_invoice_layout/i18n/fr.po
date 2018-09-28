@@ -18,17 +18,17 @@ msgstr ""
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_footer
 msgid "<strong>BIC:</strong>"
-msgstr ""
+msgstr "BIC:"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_footer
 msgid "<strong>Bank:</strong>"
-msgstr ""
+msgstr "Banque:"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_footer
 msgid "<strong>IBAN:</strong>"
-msgstr ""
+msgstr "IBAN:"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,help:altissia_invoice_layout.field_res_company_invoice_footer
@@ -38,12 +38,12 @@ msgstr ""
 #. module: altissia_invoice_layout
 #: model:ir.model,name:altissia_invoice_layout.model_res_partner_bank
 msgid "Bank Accounts"
-msgstr ""
+msgstr "Comptes bancaires"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
 msgid "Cancelled Invoice"
-msgstr ""
+msgstr "Facture annulée"
 
 #. module: altissia_invoice_layout
 #: code:addons/altissia_invoice_layout/models/account_invoice.py:46
@@ -60,85 +60,85 @@ msgstr ""
 #. module: altissia_invoice_layout
 #: model:ir.model,name:altissia_invoice_layout.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Entreprises"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_invoice_partner_company
 msgid "Customer Company"
-msgstr ""
+msgstr "Société du client"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.invoice_altissia_invoice_layout_form
 msgid "Delivery address"
-msgstr ""
+msgstr "Adresse de livraison"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_invoice_delivery_contact_id
 msgid "Delivery contact"
-msgstr ""
+msgstr "Contact de livraison"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
 msgid "Draft Invoice"
-msgstr ""
+msgstr "Facture Brouillon"
 
 #. module: altissia_invoice_layout
 #: model:ir.model,name:altissia_invoice_layout.model_account_invoice
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
 msgid "Invoice"
-msgstr ""
+msgstr "Facture"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_company_invoice_footer
 msgid "Invoice Footer"
-msgstr ""
+msgstr "Pied du Facture"
 
 #. module: altissia_invoice_layout
 #: model:ir.model,name:altissia_invoice_layout.model_account_invoice_refund
 msgid "Invoice Refund"
-msgstr ""
+msgstr "Facture d'avoir"
 
 #. module: altissia_invoice_layout
 #: code:addons/altissia_invoice_layout/models/account_invoice.py:110
 #, python-format
 msgid "Invoice refund"
-msgstr ""
+msgstr "Facture d'avoir"
 
 #. module: altissia_invoice_layout
 #: model:ir.model,name:altissia_invoice_layout.model_account_journal
 msgid "Journal"
-msgstr ""
+msgstr "Journal"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
 msgid "PRO-FORMA"
-msgstr ""
+msgstr "PRO-FORMA"
 
 #. module: altissia_invoice_layout
 #: model:ir.model,name:altissia_invoice_layout.model_res_partner
 msgid "Partner"
-msgstr ""
+msgstr "Partenaire"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_footer
 msgid "Payment instructions:<br/>"
-msgstr ""
+msgstr "Instructions de paiement:"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_partner_person_name
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_users_person_name
 msgid "Person Name"
-msgstr ""
+msgstr "Nom du personne"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_footer
 msgid "Please mention the invoice reference number in all communication:"
-msgstr ""
+msgstr "Veuillez mentionner le numéro de référence de la facture dans toutes les communications:"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
 msgid "Refund"
-msgstr ""
+msgstr "Avoir"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_journal_journal_refund_id
@@ -153,12 +153,12 @@ msgstr ""
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
 msgid "Supplier Invoice"
-msgstr ""
+msgstr "Facture fournisseur"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
 msgid "Supplier Refund"
-msgstr ""
+msgstr "Avoir Fournisseur"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_invoice_use_parent_address
