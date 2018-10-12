@@ -23,17 +23,32 @@ class AccountInvoice(models.Model):
 class AccountJournal(models.Model):
     _inherit = "account.journal"
 
-
     @api.model
     def run_scheduler_refund_journal(self):
         # for rec in self :
+        ctx = self.env.context.copy()
+        ctx['is_sale_purchase'] = True
         for line in self.env['account.journal'].search([('type', 'in', ['sale', 'purchase'])]):
-            if not line.refund_sequence:
-                line.write({'refund_sequence':True})
-            if line.refund_sequence and not line.refund_sequence_id:
-                vals ={
-                    'code':line.code,
-                    'name':line.name,
-                    'company_id':line.company_id.id,
+            if line.refund_sequence_id:
+                prefix = self.with_context(ctx)._get_sequence_prefix(line.code, refund=True)
+                line.refund_sequence_id.prefix = prefix
+            else:
+                vals = {
+                    'code': line.code,
+                    'name': line.name + '  Refund',
+                    'company_id': line.company_id.id,
                 }
-                line.write({'refund_sequence_id': self.sudo()._create_sequence(vals, refund=True).id})
+                line.write({'refund_sequence_id': self.sudo().with_context(ctx)._create_sequence(vals, refund=True).id})
+
+            line.write({'refund_sequence': True})
+
+    @api.model
+    def _get_sequence_prefix(self, code, refund=False):
+        ctx = self.env.context
+        if ctx.get('is_sale_purchase', False):
+            prefix = code.upper()
+            if refund:
+                prefix = prefix + 'CN'
+            return prefix + '/%(year)s/'
+        else:
+            return super(AccountJournal, self)._get_sequence_prefix(code,refund)

@@ -31,4 +31,13 @@
             </field>
         </record>
     </data>
+
+        <record id="action_update_refund_journal_sequence" model="ir.actions.server">
+            <field name="name">Update refund sequence</field>
+            <field name="model_id" ref="account.model_account_journal"/>
+            <field name="state">code</field>
+            <field name="code">action = model.run_scheduler_refund_journal()</field>
+            <field eval="True" name="condition"/>
+        </record>
+
 </openerp>

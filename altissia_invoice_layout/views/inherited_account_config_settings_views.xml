@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_config_refund_journal" model="ir.ui.view">
+        <field name="name">account settings</field>
+        <field name="model">account.config.settings</field>
+        <field name="inherit_id" ref="account.view_account_config_settings"/>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//group[@name='accounting']" position="after">
+                <div>
+                    <label string="Update Journals refund sequence "/>
+                    <button type="action" name="altissia_invoice_layout.action_update_refund_journal_sequence"
+                            string="Update sequences" class="oe_inline oe_link" icon="fa-cogs"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

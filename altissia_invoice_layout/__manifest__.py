@@ -16,12 +16,12 @@ Customizations for invoicing.
     'data': [
         'views/res_company_view.xml',
         'data/custom_paperformat.xml',
-        'data/automate_refund_journal.xml',
         'views/report.xml',
         'views/layouts.xml',
         'views/report_invoice.xml',
         'views/account_invoice_view.xml',
-        'views/bank.xml'
+        'views/bank.xml',
+        'views/inherited_account_config_settings_views.xml'
     ],
     'installable': True,
     'application': True,
