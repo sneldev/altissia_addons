@@ -29,12 +29,16 @@ class AccountJournal(models.Model):
         ctx = self.env.context.copy()
         ctx['is_sale_purchase'] = True
         for line in self.env['account.journal'].search([('type', 'in', ['sale', 'purchase'])]):
+            if line.sequence_id:
+                code = line.sequence_id.prefix[:(line.sequence_id.prefix).find('/')]
+            else:
+                code = line.code
             if line.refund_sequence_id:
-                prefix = self.with_context(ctx)._get_sequence_prefix(line.code, refund=True)
+                prefix = self.with_context(ctx)._get_sequence_prefix(code, refund=True)
                 line.refund_sequence_id.prefix = prefix
             else:
                 vals = {
-                    'code': line.code,
+                    'code': code,
                     'name': line.name + '  Refund',
                     'company_id': line.company_id.id,
                 }
@@ -49,6 +53,6 @@ class AccountJournal(models.Model):
             prefix = code.upper()
             if refund:
                 prefix = prefix + 'CN'
-            return prefix + '/%(year)s/'
+            return prefix + '/%(range_year)s/'
         else:
             return super(AccountJournal, self)._get_sequence_prefix(code,refund)
