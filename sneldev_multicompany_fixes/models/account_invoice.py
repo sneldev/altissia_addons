@@ -19,8 +19,8 @@
 ##############################################################################
 from openerp.models import Model, api
 from openerp.api import multi, model
-import logging
 
+import logging
 _logger = logging.getLogger(__name__)
 
 
