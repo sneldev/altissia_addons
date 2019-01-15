@@ -23,10 +23,8 @@ from openerp.api import multi, model
 import logging
 _logger = logging.getLogger(__name__)
 
-
 class AccountInvoice(Model):
     _inherit = 'account.invoice'
-
 
     @api.onchange('partner_id', 'company_id')
     def _onchange_partner_id(self):
