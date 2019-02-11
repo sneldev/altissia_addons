@@ -25,7 +25,7 @@
     "website": "http://www.eezee-it.com",
     "description": """Provide a profile for Altissia
     This module install the module\"Altissia Customization on CRM module\"""",
-    "depends": ['altissia_crm', 'altissia_project'],
+    "depends": ['altissia_crm', 'altissia_project', 'mass_editing'],
     "installable": True,
     "active": True
 }
