@@ -26,6 +26,10 @@
     "description": """Provide a profile for Altissia
     This module install the module\"Altissia Customization on CRM module\"""",
     "depends": ['altissia_crm', 'altissia_project', 'mass_editing'],
+    'data': [
+        'data/mass_editing_group.xml',
+        'views/mass_editing_view.xml',
+    ],
     "installable": True,
     "active": True
 }

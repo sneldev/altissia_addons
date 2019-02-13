@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="mass_editing_user_group" model="res.groups">
+        <field name="name">Mass Editing Users</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        <field name="comment">the user will be able to use the mass editing functionality.</field>
+    </record>
+
+</odoo>

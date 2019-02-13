@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.menu" id="mass_editing.menu_mass_editing">
+        <field eval="[(4, ref('profile_altissia.mass_editing_user_group'))]" name="groups_id"/>
+    </record>
+    <record model="ir.ui.menu" id="mass_editing.menu_mass_object_view">
+        <field eval="[(4, ref('profile_altissia.mass_editing_user_group'))]" name="groups_id"/>
+    </record>
+
+</odoo>
