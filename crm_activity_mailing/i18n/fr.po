@@ -1,0 +1,142 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* crm_activity_mailing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e-20161126\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-15 12:45+0000\n"
+"PO-Revision-Date: 2019-05-15 12:45+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: crm_activity_mailing
+#: code:addons/crm_activity_mailing/models/res_users.py:100
+#, python-format
+msgid " \n"
+"                                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);\">\n"
+"                                    <br/>\n"
+"                                    <h1>Future tasks : </h1>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Name</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Activity Type</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Summary</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Activity Link</td>\n"
+"                                    </tr>\n"
+"                                "
+msgstr " \n"
+"                                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);\">\n"
+"                                    <br/>\n"
+"                                    <h1>Taches futures : </h1>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Nom</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Type d'activité</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Résumé</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Lien d'activité</td>\n"
+"                                    </tr>\n"
+""
+
+#. module: crm_activity_mailing
+#: code:addons/crm_activity_mailing/models/res_users.py:46
+#, python-format
+msgid " \n"
+"                                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);\">\n"
+"                                    <br/>\n"
+"                                    <h1>Late tasks : </h1>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Name</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Activity Type</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Summary</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Activity Link</td>\n"
+"                                    </tr>\n"
+"                                "
+msgstr " \n"
+"                                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);\">\n"
+"                                    <br/>\n"
+"                                    <h1>Taches en retard : </h1>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Nom</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Type d'activité</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Résumé</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Lien d'activité</td>\n"
+"                                    </tr>\n"
+""
+
+#. module: crm_activity_mailing
+#: code:addons/crm_activity_mailing/models/res_users.py:73
+#, python-format
+msgid " \n"
+"                                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);\">\n"
+"                                    <br/>\n"
+"                                    <h1>Tasks in the next 7 days : </h1>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Name</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Activity Type</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Summary</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Activity Link</td>\n"
+"                                    </tr>\n"
+"                                "
+msgstr " \n"
+"                                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);\">\n"
+"                                    <br/>\n"
+"                                    <h1>Tâches dans les 7 prochaines jours : </h1>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Nom</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Type d'activité</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Résumé</td>\n"
+"                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Lien d'activité</td>\n"
+"                                    </tr>\n"
+""
+
+#. module: crm_activity_mailing
+#: code:addons/crm_activity_mailing/models/res_users.py:44
+#, python-format
+msgid "<h2>Today's date - %s - </h2>"
+msgstr "<h2>Date d'aujourd hui - %s - </h2>"
+
+#. module: crm_activity_mailing
+#: code:addons/crm_activity_mailing/models/res_users.py:66
+#: code:addons/crm_activity_mailing/models/res_users.py:93
+#: code:addons/crm_activity_mailing/models/res_users.py:120
+#, python-format
+msgid "<tr>\n"
+"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
+"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
+"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
+"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"><a href=\"\">Open Activity</a></td>\n"
+"                                         </tr>"
+""
+msgstr "<tr>\n"
+"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
+"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
+"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
+"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"><a href=\"\">Allez vers l'activité</a></td>\n"
+"                                         </tr>"
+""
+
+#. module: crm_activity_mailing
+#: model:ir.model.fields,field_description:crm_activity_mailing.field_res_users_task_summary_mail
+msgid "Receive tasks summary email"
+msgstr "Reçevoir les tâches par mail"
+
+#. module: crm_activity_mailing
+#: model:ir.model,name:crm_activity_mailing.model_res_users
+msgid "Users"
+msgstr "Utilisateurs"
+
+#. module: crm_activity_mailing
+#: code:addons/crm_activity_mailing/models/res_users.py:128
+#, python-format
+msgid "Your CRM Activities - %s -"
+msgstr "Votre Activités CRM - %s -"
