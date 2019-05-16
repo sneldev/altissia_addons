@@ -56,3 +56,10 @@ class AccountJournal(models.Model):
             return prefix + '/%(range_year)s/'
         else:
             return super(AccountJournal, self)._get_sequence_prefix(code,refund)
+
+
+
+class AccountInvoiceLine(models.Model):
+    _inherit = "account.invoice.line"
+
+    proj_start_date = fields.Date(string="Project start date")
