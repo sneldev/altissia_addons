@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e-20161126\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-15 12:45+0000\n"
-"PO-Revision-Date: 2019-05-15 12:45+0000\n"
+"POT-Creation-Date: 2019-05-16 09:01+0000\n"
+"PO-Revision-Date: 2019-05-16 09:01+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: crm_activity_mailing
-#: code:addons/crm_activity_mailing/models/res_users.py:100
+#: code:addons/crm_activity_mailing/models/res_users.py:94
 #, python-format
 msgid " \n"
 "                                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);\">\n"
@@ -33,7 +33,7 @@ msgid " \n"
 msgstr " \n"
 "                                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);\">\n"
 "                                    <br/>\n"
-"                                    <h1>Taches futures : </h1>\n"
+"                                    <h1>Tâches futures : </h1>\n"
 "                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
 "                                    <tr>\n"
 "                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Nom</td>\n"
@@ -41,10 +41,10 @@ msgstr " \n"
 "                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Résumé</td>\n"
 "                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Lien d'activité</td>\n"
 "                                    </tr>\n"
-""
+"                                "
 
 #. module: crm_activity_mailing
-#: code:addons/crm_activity_mailing/models/res_users.py:46
+#: code:addons/crm_activity_mailing/models/res_users.py:40
 #, python-format
 msgid " \n"
 "                                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);\">\n"
@@ -61,7 +61,7 @@ msgid " \n"
 msgstr " \n"
 "                                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);\">\n"
 "                                    <br/>\n"
-"                                    <h1>Taches en retard : </h1>\n"
+"                                    <h1>Tâches en retard : </h1>\n"
 "                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
 "                                    <tr>\n"
 "                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Nom</td>\n"
@@ -69,10 +69,10 @@ msgstr " \n"
 "                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Résumé</td>\n"
 "                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Lien d'activité</td>\n"
 "                                    </tr>\n"
-""
+"                                "
 
 #. module: crm_activity_mailing
-#: code:addons/crm_activity_mailing/models/res_users.py:73
+#: code:addons/crm_activity_mailing/models/res_users.py:67
 #, python-format
 msgid " \n"
 "                                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);\">\n"
@@ -97,33 +97,21 @@ msgstr " \n"
 "                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Résumé</td>\n"
 "                                        <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;font-style:italic;background-color:#c0c0c0;vertical-align:top\">Lien d'activité</td>\n"
 "                                    </tr>\n"
-""
+"                                "
 
 #. module: crm_activity_mailing
-#: code:addons/crm_activity_mailing/models/res_users.py:44
+#: code:addons/crm_activity_mailing/models/res_users.py:38
 #, python-format
 msgid "<h2>Today's date - %s - </h2>"
-msgstr "<h2>Date d'aujourd hui - %s - </h2>"
+msgstr "<h2>Date d'aujourd'hui - %s - </h2>"
 
 #. module: crm_activity_mailing
-#: code:addons/crm_activity_mailing/models/res_users.py:66
-#: code:addons/crm_activity_mailing/models/res_users.py:93
-#: code:addons/crm_activity_mailing/models/res_users.py:120
+#: code:addons/crm_activity_mailing/models/res_users.py:62
+#: code:addons/crm_activity_mailing/models/res_users.py:89
+#: code:addons/crm_activity_mailing/models/res_users.py:116
 #, python-format
-msgid "<tr>\n"
-"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
-"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
-"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
-"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"><a href=\"\">Open Activity</a></td>\n"
-"                                         </tr>"
-""
-msgstr "<tr>\n"
-"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
-"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
-"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"></td>\n"
-"                                            <td style=\"font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;\"><a href=\"\">Allez vers l'activité</a></td>\n"
-"                                         </tr>"
-""
+msgid "Open Activity"
+msgstr "Allez vers l'activité"
 
 #. module: crm_activity_mailing
 #: model:ir.model.fields,field_description:crm_activity_mailing.field_res_users_task_summary_mail
@@ -136,7 +124,7 @@ msgid "Users"
 msgstr "Utilisateurs"
 
 #. module: crm_activity_mailing
-#: code:addons/crm_activity_mailing/models/res_users.py:128
+#: code:addons/crm_activity_mailing/models/res_users.py:121
 #, python-format
 msgid "Your CRM Activities - %s -"
 msgstr "Votre Activités CRM - %s -"

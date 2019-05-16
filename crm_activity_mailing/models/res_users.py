@@ -15,8 +15,6 @@ class Users(models.Model):
 
     @api.model
     def crm_activity_mail_send(self):
-        # for usr in self.env['res.users'].search([('id','=',131)]):
-        print(self.env['res.users'].search([]))
         for usr in self.env['res.users'].search([]):
             if usr.task_summary_mail:
                 action_pool = self.env['ir.actions.act_window']
@@ -25,10 +23,6 @@ class Users(models.Model):
                 action_id = action_pool.with_context(lang='en_US').search([('res_model', '=', 'crm.lead'),('view_type', '=', 'form'),('name', '=', "Next Activities")], order='id asc')[0]
 
                 record_ids = self.env['crm.lead'].search([('type','=','opportunity'), ('date_action', '!=', False),('user_id','=',usr.id)])
-                logger.info(datetime.today().date())
-                logger.info(record_ids)
-                logger.info(usr.id)
-                logger.info("********************************************")
                 lst_late = []
                 lst_7_future = []
                 lst_future = []
@@ -41,7 +35,7 @@ class Users(models.Model):
                     if date_action > date.today() + timedelta(days=7):
                         lst_future.append(rec)
 
-                body_html=_("""<h2>Today's date - %s - </h2>""" % (datetime.today().date().strftime("%d/%m/%Y")))
+                body_html=_("<h2>Today's date - %s - </h2>") % (datetime.today().date().strftime("%d/%m/%Y"))
                 if len(lst_late)>0:
                     body_html += _(""" 
                                     <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34);">
@@ -60,12 +54,12 @@ class Users(models.Model):
                         activity_url = url + '/web?#' + 'id=' + str(
                             record.id) + '&view_type=form' + '&model=crm.lead' + '&action=' + str(action_id.id)
 
-                        body_html += _("""<tr>
+                        body_html += """<tr>
                                             <td style="font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;">""" + (record.name or ' ') + """</td>
                                             <td style="font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;">""" + (record.next_activity_id.name or ' ') + """</td>
                                             <td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;">""" + (record.title_action or ' ') + """</td>
-                                            <td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;"><a href=\"""" + activity_url + """\">Open Activity</a></td>
-                                         </tr>""")
+                                            <td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;"><a href=\"""" + activity_url + """\">"""
+                        body_html += _("Open Activity") + """</a></td></tr>"""
 
                     body_html += """</table><br/><br/>"""
 
@@ -87,12 +81,12 @@ class Users(models.Model):
                         activity_url = url + '/web?#' + 'id=' + str(
                             record.id) + '&view_type=form' + '&model=crm.lead' + '&action=' + str(action_id.id)
 
-                        body_html += _("""<tr>
+                        body_html += """<tr>
                                             <td style="font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;">""" + (record.name or ' ') + """</td>
                                             <td style="font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;">""" + (record.next_activity_id.name or ' ') + """</td>
                                             <td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;">""" + (record.title_action or ' ') + """</td>
-                                            <td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;"><a href=\"""" + activity_url + """\">Open Activity</a></td>
-                                         </tr>""")
+                                            <td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;"><a href=\"""" + activity_url + """\">"""
+                        body_html += _("Open Activity") + """</a></td></tr>"""
 
                     body_html += """</table><br/><br/>"""
 
@@ -114,17 +108,16 @@ class Users(models.Model):
                         activity_url = url + '/web?#' + 'id=' + str(
                             record.id) + '&view_type=form' + '&model=crm.lead' + '&action=' + str(action_id.id)
 
-                        body_html += _("""<tr>
+                        body_html += """<tr>
                                             <td style="font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;">""" + (record.name or ' ') + """</td>
                                             <td style="font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;">""" + (record.next_activity_id.name or ' ') + """</td>
                                             <td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;">""" + (record.title_action or ' ') + """</td>
-                                            <td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;"><a href=\"""" + activity_url + """\">Open Activity</a></td>
-                                         </tr>""")
+                                            <td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;"><a href=\"""" + activity_url + """\">"""
+                        body_html += _("Open Activity") + """</a></td></tr>"""
 
                     body_html += """</table><br/><br/>"""
                 if record_ids:
                     vals = {
-                        # 'subject': _('Your CRM Activities - ' + datetime.today().date().strftime("%d/%m/%Y") + ' -'),
                         'subject': _("Your CRM Activities - %s -") % (datetime.today().date().strftime("%d/%m/%Y")),
                         'body': body_html,
                         'body_html': body_html,
