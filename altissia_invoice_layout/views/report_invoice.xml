@@ -117,6 +117,7 @@
                 <thead class="invoice_thead" style="border:1px solid black">
                     <tr>
                         <th>Description</th>
+                        <th>Project start date</th>
                         <th>Quantity</th>
                         <th class="text-right">Unit Price</th>
                         <th class="text-right" groups="sale.group_discount_per_so_line">Discount (%)</th>
@@ -126,6 +127,7 @@
                 <tbody class="invoice_tbody">
                     <tr t-foreach="o.invoice_line_ids" t-as="l">
                         <td><span t-field="l.name"/></td>
+                        <td><span t-field="l.proj_start_date"/></td>
                         <td>
                             <span t-field="l.quantity"/>
                             <span t-field="l.uos_id"  groups="product.group_uom"/>
@@ -228,6 +230,7 @@
     <xpath expr="//table/tbody[@class='invoice_tbody']" position="replace">
         <tr t-foreach="o.invoice_line_ids" t-as="l">
             <td><span t-field="l.name"/></td>
+            <td><span t-field="l.proj_start_date"/></td>
             <td>
                 <span t-field="l.quantity"/>
                 <span t-field="l.uos_id"  groups="product.group_uom"/>
