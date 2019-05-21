@@ -63,7 +63,7 @@ class CrmLead(Model):
             'default_use_template': bool(template_id),
             'default_template_id': template_id,
             'default_composition_mode': 'comment',
-            'subject':self.env.user.name +' Sales Report '+ datetime.today().date().strftime("%d/%m/%Y"),
+            'subject':self.env.user.name +_(' Sales Report ')+ datetime.today().date().strftime("%d/%m/%Y"),
             'last_7_days_lead':last_7_days_lead,
             'last_7_days_invoices':last_7_days_invoices,
             'next_7_days_tasks':next_7_days_tasks,
