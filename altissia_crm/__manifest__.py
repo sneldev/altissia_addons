@@ -26,10 +26,13 @@
     "description": "Customize the CRM module to altissia's needs",
     "depends": ['base', 'crm', 'sale'],
     "data": [
+        "data/crm_sale_report_mail_template.xml",
+        "wizard/mail_compose_message_view.xml",
         "view/leads.xml",
         "view/opportunity.xml",
         "view/res_partner.xml",
         "view/lead_opportunity.xml",
+        "view/sales_views.xml",
     ],
     "installable": True,
     "active": True
