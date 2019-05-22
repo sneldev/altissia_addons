@@ -17,13 +17,70 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+
 from openerp.fields import Char
 from openerp.fields import Boolean
-from openerp.models import Model, api, _
-
+from openerp.models import Model, TransientModel, api, _
+from openerp import fields
+from datetime import datetime, date, timedelta
 
 class CrmLead(Model):
     _inherit = 'crm.lead'
+
+    @api.multi
+    def get_mail_compose_message(self):
+
+        last_7_days_lead = []
+        last_7_days_invoices = []
+        next_7_days_tasks = []
+        for lead in self.env['crm.lead'].search([('user_id','=', self.env.uid)]):
+            create_date = fields.Date.from_string(lead.create_date)
+            if date.today() + timedelta(days=-7) < create_date <= date.today():
+                last_7_days_lead.append((lead.create_date, lead.partner_id.name, lead.name))
+
+        for inv in self.env['account.invoice'].search([('create_uid','=',self.env.uid)]):
+            create_date = fields.Date.from_string(inv.create_date)
+            if date.today() + timedelta(days=-7) < create_date <= date.today():
+                last_7_days_invoices.append((inv.create_date, inv.partner_id.name, inv.amount_untaxed))
+
+        for task in self.env['crm.lead'].search([('type','=','opportunity'), ('date_action', '!=', False),('user_id','=',self.env.uid)]):
+            date_action = fields.Date.from_string(task.date_action)
+            if date.today() <= date_action <= date.today() + timedelta(days=7):
+                next_7_days_tasks.append((task.date_action, task.partner_id.name, task.title_action))
+
+        ir_model_data = self.env['ir.model.data']
+        try:
+            template_id = ir_model_data.get_object_reference('altissia_crm', 'mail_template_crm_sale_report_mail')[1]
+        except ValueError:
+            template_id = False
+        try:
+            compose_form_id = ir_model_data.get_object_reference('mail', 'email_compose_message_wizard_form')[1]
+        except ValueError:
+            compose_form_id = False
+        ctx = dict()
+        ctx.update({
+            'default_model': 'crm.lead',
+            # 'default_res_id': self.ids[0],
+            'default_use_template': bool(template_id),
+            'default_template_id': template_id,
+            'default_composition_mode': 'comment',
+            'subject':self.env.user.name +_(' Sales Report ')+ datetime.today().date().strftime("%d/%m/%Y"),
+            'last_7_days_lead':last_7_days_lead,
+            'last_7_days_invoices':last_7_days_invoices,
+            'next_7_days_tasks':next_7_days_tasks,
+            'email_to': 'projects@altissia.org',
+            'default_email_cc': 'nlboel@altissia.org, cbounameaux@altissia.org, tmoreau@altissia.org',
+        })
+        return {
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'mail.compose.message',
+            'views': [(compose_form_id, 'form')],
+            'view_id': compose_form_id,
+            'target': 'new',
+            'context': ctx,
+        }
 
     def compute_lost_visible(self):
         for rec in self:
@@ -87,3 +144,16 @@ class CrmLead(Model):
 
     website = Char('Website', size=64, help="Website of Partner or Company")
     lost_visible = Boolean(default=False ,compute='compute_lost_visible',store=False)
+    
+class Message(Model):
+
+    _name = 'mail.message'
+    _inherit = 'mail.message'
+
+    body = fields.Html('Contents', default='', sanitize=False)        
+
+    
+class MailComposeMessage(TransientModel):
+    _inherit = 'mail.compose.message'
+
+    body = fields.Html(sanitize=False)
