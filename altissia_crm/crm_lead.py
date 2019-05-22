@@ -149,4 +149,4 @@ class Message(Model):
     _name = 'mail.message'
     _inherit = 'mail.message'
 
-    body = fields.Html('Contents', default='', sanitize_style=False, strip_classes=True, sanitize_tags=False)        
+    body = fields.Html('Contents', default='', sanitize=False)        
