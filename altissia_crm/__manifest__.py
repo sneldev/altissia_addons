@@ -27,6 +27,7 @@
     "depends": ['base', 'crm', 'sale'],
     "data": [
         "data/crm_sale_report_mail_template.xml",
+        "data/mail_data.xml",
         "wizard/mail_compose_message_view.xml",
         "view/leads.xml",
         "view/opportunity.xml",
