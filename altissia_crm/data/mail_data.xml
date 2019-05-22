@@ -8,6 +8,7 @@
             <field name="auto_delete" eval="True"/>
             <field name="body_html"><![CDATA[
 % set company = ctx.get('company', user.company_id)
+<link href="https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap" rel="stylesheet">
 <div>
 % if ctx.get('has_button_access'):
 <div itemscope itemtype="http://schema.org/EmailMessage">
