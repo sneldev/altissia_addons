@@ -17,6 +17,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+
 from openerp.fields import Char
 from openerp.fields import Boolean
 from openerp.models import Model, TransientModel, api, _
