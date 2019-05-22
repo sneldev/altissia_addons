@@ -9,7 +9,7 @@
             <field name="email_to">${ctx['email_to']|safe}</field>
             <field name="lang">${user.lang}</field>
             <field name="model_id" ref="altissia_crm.model_crm_lead"/>
-            <field name="auto_delete" eval="True"/>
+            <field name="auto_delete" eval="False"/>
             <field name="body_html"><![CDATA[<html>
                         <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap" rel="stylesheet">
                         <div style="font-family: 'Roboto Slab'; font-size: 12px; color: rgb(34, 34, 34);">
