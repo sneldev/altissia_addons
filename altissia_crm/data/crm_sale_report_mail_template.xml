@@ -11,11 +11,7 @@
             <field name="model_id" ref="altissia_crm.model_crm_lead"/>
             <field name="auto_delete" eval="True"/>
             <field name="body_html"><![CDATA[<html>
-                       
-                        <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap" rel="stylesheet"/>
-                        <style>
-                        @import url('https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap');
-                        </style>
+                        <style>@import url('https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap');</style>
                         <div style="font-family: 'Roboto Slab'; font-size: 12px; color: rgb(34, 34, 34);">
                         <br/>
                         <div style="font-family: Poppins; font-size: 24px; font-weight: 700;color: #3d5285;">${ctx['subject']|safe}</div>
