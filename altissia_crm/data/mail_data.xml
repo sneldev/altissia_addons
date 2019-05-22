@@ -1,7 +1,6 @@
 <odoo>
 		<data>
         <!--Default Notification Email template -->
-	<delete model="mail.template" id='mail.mail_template_data_notification_email_default' />
         <record id="mail.mail_template_data_notification_email_default" model="mail.template">
             <field name="name">Notification Email</field>
             <field name="subject">${object.subject or (object.record_name and 'Re: %s' % object.record_name) or (object.parent_id and object.parent_id.subject and 'Re: %s' % object.parent_id.subject) or (object.parent_id and object.parent_id.record_name and 'Re: %s' % object.parent_id.record_name)}</field>
