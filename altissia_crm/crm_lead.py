@@ -19,7 +19,7 @@
 ##############################################################################
 from openerp.fields import Char
 from openerp.fields import Boolean
-from openerp.models import Model, api, _
+from openerp.models import Model, TransientModel, api, _
 from openerp import fields
 from datetime import datetime, date, timedelta
 
@@ -150,3 +150,9 @@ class Message(Model):
     _inherit = 'mail.message'
 
     body = fields.Html('Contents', default='', sanitize=False)        
+
+    
+class MailComposeMessage(TransientModel):
+    _inherit = 'mail.compose.message'
+
+    body = fields.Html(sanitize=False)
