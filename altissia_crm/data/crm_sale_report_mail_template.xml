@@ -14,7 +14,7 @@
                        
                         <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap" rel="stylesheet">
                         <style>
-                        @import url('https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap');
+                        &#64;import url('https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap');
                         </style>
                         <div style="font-family: 'Roboto Slab'; font-size: 12px; color: rgb(34, 34, 34);">
                         <br/>
