@@ -12,7 +12,7 @@
             <field name="auto_delete" eval="True"/>
             <field name="body_html"><![CDATA[<html>
                        
-                        <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap" rel="stylesheet">
+                        <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap" rel="stylesheet"/>
                         <style>
                         &#64;import url('https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap');
                         </style>
