@@ -63,7 +63,7 @@
 </tbody></table>
 </div>
 % endif
-${object.body}
+${object.body | safe}
 % if ctx.get('tracking'):
     <ul>
     % for tracking in ctx['tracking']
