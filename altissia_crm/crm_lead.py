@@ -144,7 +144,7 @@ class CrmLead(Model):
     website = Char('Website', size=64, help="Website of Partner or Company")
     lost_visible = Boolean(default=False ,compute='compute_lost_visible',store=False)
     
-class Message(models.Model):
+class Message(Model):
 
     _name = 'mail.message'
     _inherit = 'mail.message'
