@@ -18,3 +18,16 @@ class MailMail(models.Model):
         res = super(MailMail, self).create(vals)
 
         return res
+    
+    
+class MailTemplate(models.Model):
+    _inherit = "mail.template"
+    
+    @api.multi
+    def generate_email(self, res_ids, fields=None):
+        
+        res = super(MailTemplate, self).generate_email(res_ids, fields)
+        logger.info(res)
+        # Revert sanitization
+        res['body'] = res['body_html']
+        return res
