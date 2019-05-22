@@ -62,4 +62,4 @@ class AccountJournal(models.Model):
 class AccountInvoiceLine(models.Model):
     _inherit = "account.invoice.line"
 
-    proj_start_date = fields.Date(string="Project start date")
+    proj_start_date = fields.Date(string="Project Start Date")
