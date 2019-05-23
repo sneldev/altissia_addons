@@ -25,9 +25,8 @@ class MailTemplate(models.Model):
     
     @api.multi
     def generate_email(self, res_ids, fields=None):
-        
         res = super(MailTemplate, self).generate_email(res_ids, fields)
-        logger.info(res)
         # Revert sanitization
-        res['body'] = res['body_html']
+        for result, res_id in res.iteritems():
+            res[res_id]['body'] = res[res_id]['body_html']
         return res
