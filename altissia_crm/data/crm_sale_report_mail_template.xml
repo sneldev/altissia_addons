@@ -15,42 +15,46 @@
                         <div style="font-family: 'Roboto Slab'; font-size: 12px; color: rgb(34, 34, 34);">
                         <br/>
                         <div style="font-family: Poppins; font-size: 24px; font-weight: 700;color: #3d5285;">${ctx['subject']|safe}</div>
-                        % if ctx.get('last_7_days_lead'):
-                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">NEW LEADS</div>
-                            <div style="font-size: 15px;">
-                            <ul>
-                                <!--<li> [Tous les leads créer dans les 7 derniers jours et assignés à la personne]</li>-->
+
+                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">NEW LEADS</div>
+                        <div style="font-size: 15px;">
+                        <ul>
+                            % if ctx.get('last_7_days_lead'):
                                 % for lead in ctx['last_7_days_lead']:
-                                    <!--<li> [Date] : [Client] - [Nom du lead] </li>-->
                                     <li>${lead[0]} : ${lead[1]} - ${lead[2]}</li>
                                 % endfor
-                            </ul>
-                            </div>
-                        % endif
-                        % if ctx.get('last_7_days_invoices'):
-                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">INVOICES</div>
-                            <div style="font-size: 15px;">
-                            <ul>
-                                <!--<li> [Toutes les factures crées par l'utilisateur dans les 7 derniers jours]</li>-->
+                            % else:
+                                <li></li>
+                            % endif
+                        </ul>
+                        </div>
+
+                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">INVOICES</div>
+                        <div style="font-size: 15px;">
+                        <ul>
+                            % if ctx.get('last_7_days_invoices'):
                                 % for inv in ctx['last_7_days_invoices']:
-                                    <!--<li> [Date] : [Client] - [Montant HTVA]</li>-->
-                                    <li> ${inv[0]} : ${inv[1]} - ${inv[2]}</li>
+                                    <li> ${inv[0]} : ${inv[1]} - ${inv[2]} ${inv[3]}</li>
                                 % endfor
-                            </ul>
-                            </div>
-                        % endif
-                        % if ctx.get('next_7_days_tasks'):
-                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">TASKS FOR NEXT 7 DAYS</div>
-                            <div style="font-size: 15px;">
-                            <ul>
-                                <!--<li> [Toutes les tâches prévues dans les 7 prochains jours comme pour le mail]</li>-->
+                            % else:
+                                <li></li>
+                            % endif
+                        </ul>
+                        </div>
+
+                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">TASKS FOR NEXT 7 DAYS</div>
+                        <div style="font-size: 15px;">
+                        <ul>
+                            % if ctx.get('next_7_days_tasks'):
                                 % for task in ctx['next_7_days_tasks']:
-                                    <!--<li> [Date] : [Client] - [Titre de l'activité] </li>-->
                                     <li> ${task[0]} : ${task[1]} - ${task[2]}</li>
                                 % endfor
-                            </ul>
-                            </div>
-                        % endif
+                            % else:
+                                <li></li>
+                            % endif
+                        </ul>
+                        </div>
+
                 </html>
             ]]></field>
         </record>
