@@ -19,6 +19,14 @@ class MailMail(models.Model):
 
         return res
     
+ 
+class Message(Model):
+
+    _name = 'mail.message'
+    _inherit = 'mail.message'
+
+    body = fields.Html('Contents', default='', sanitize=False)        
+
     
 class MailTemplate(models.Model):
     _inherit = "mail.template"
