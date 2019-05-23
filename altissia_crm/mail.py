@@ -20,7 +20,7 @@ class MailMail(models.Model):
         return res
     
  
-class Message(Model):
+class Message(models.Model):
 
     _name = 'mail.message'
     _inherit = 'mail.message'
