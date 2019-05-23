@@ -27,6 +27,9 @@ class MailTemplate(models.Model):
     def generate_email(self, res_ids, fields=None):
         res = super(MailTemplate, self).generate_email(res_ids, fields)
         # Revert sanitization
-        for result, res_id in res.iteritems():
-            res[res_id]['body'] = res[res_id]['body_html']
+        if 'body' in res:
+            res['body'] = res['body_html']
+        else:
+            for res_id, result in res.iteritems():
+                res[res_id]['body'] = res[res_id]['body_html']
         return res
