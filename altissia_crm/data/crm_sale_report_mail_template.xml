@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="mail_template_crm_sale_report_mail" model="mail.template">
+            <field name="name">CRM sales report</field>
+            <field name="subject">${ctx['subject']|safe}</field>
+            <field name="email_from">${user.email}</field>
+            <field name="email_to">${ctx['email_to']|safe}</field>
+            <field name="lang">${user.lang}</field>
+            <field name="model_id" ref="altissia_crm.model_crm_lead"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html"><![CDATA[<html>
+                        <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap" rel="stylesheet">
+                        <div style="font-family: 'Roboto Slab'; font-size: 12px; color: rgb(34, 34, 34);">
+                        <br/>
+                        <div style="font-family: Poppins; font-size: 24px; font-weight: 700;color: #3d5285;">${ctx['subject']|safe}</div>
+
+                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">NEW LEADS</div>
+                        <div style="font-size: 15px;">
+                        <ul>
+                            % if ctx.get('last_7_days_lead'):
+                                % for lead in ctx['last_7_days_lead']:
+                                    <li>${lead[0]} : ${lead[1]} - ${lead[2]}</li>
+                                % endfor
+                            % else:
+                                <li></li>
+                            % endif
+                        </ul>
+                        </div>
+
+                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">INVOICES</div>
+                        <div style="font-size: 15px;">
+                        <ul>
+                            % if ctx.get('last_7_days_invoices'):
+                                % for inv in ctx['last_7_days_invoices']:
+                                    <li> ${inv[0]} : ${inv[1]} - ${inv[2]} ${inv[3]}</li>
+                                % endfor
+                            % else:
+                                <li></li>
+                            % endif
+                        </ul>
+                        </div>
+
+                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">TASKS FOR NEXT 7 DAYS</div>
+                        <div style="font-size: 15px;">
+                        <ul>
+                            % if ctx.get('next_7_days_tasks'):
+                                % for task in ctx['next_7_days_tasks']:
+                                    <li> ${task[0]} : ${task[1]} - ${task[2]}</li>
+                                % endfor
+                            % else:
+                                <li></li>
+                            % endif
+                        </ul>
+                        </div>
+
+                </html>
+            ]]></field>
+        </record>
+
+    </data>
+</odoo>

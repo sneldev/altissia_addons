@@ -1,13 +1,13 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
 #	* altissia_crm
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0-20130723-231040\n"
+"Project-Id-Version: Odoo Server 10.0+e-20161126\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-06 09:31+0000\n"
-"PO-Revision-Date: 2013-11-06 09:31+0000\n"
+"POT-Creation-Date: 2019-05-23 10:51+0000\n"
+"PO-Revision-Date: 2019-05-23 10:51+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,37 +16,162 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: altissia_crm
-#: view:crm.lead:0
+#: code:addons/altissia_crm/crm_lead.py:70
+#, python-format
+msgid " Sales Report "
+msgstr " Rapport des ventes "
+
+#. module: altissia_crm
+#: model:mail.template,subject:altissia_crm.mail_template_crm_sale_report_mail
+msgid "${ctx['subject']|safe}"
+msgstr ""
+
+#. module: altissia_crm
+#: model:mail.template,body_html:altissia_crm.mail_template_crm_sale_report_mail
+msgid "<html>\n"
+"                        <link href=\"https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap\" rel=\"stylesheet\">\n"
+"                        <div style=\"font-family: 'Roboto Slab'; font-size: 12px; color: rgb(34, 34, 34);\">\n"
+"                        <br/>\n"
+"                        <div style=\"font-family: Poppins; font-size: 24px; font-weight: 700;color: #3d5285;\">${ctx['subject']|safe}</div>\n"
+"\n"
+"                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">NEW LEADS</div>\n"
+"                        <div style=\"font-size: 15px;\">\n"
+"                        <ul>\n"
+"                            <!--<li> [Tous les leads créer dans les 7 derniers jours et assignés à la personne]</li>-->\n"
+"                            % if ctx.get('last_7_days_lead'):\n"
+"                                % for lead in ctx['last_7_days_lead']:\n"
+"                                    <!--<li> [Date] : [Client] - [Nom du lead] </li>-->\n"
+"                                    <li>${lead[0]} : ${lead[1]} - ${lead[2]}</li>\n"
+"                                % endfor\n"
+"                            % else:\n"
+"                                <li></li>\n"
+"                            % endif\n"
+"                        </ul>\n"
+"                        </div>\n"
+"\n"
+"                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">INVOICES</div>\n"
+"                        <div style=\"font-size: 15px;\">\n"
+"                        <ul>\n"
+"                            <!--<li> [Toutes les factures crées par l'utilisateur dans les 7 derniers jours]</li>-->\n"
+"                            % if ctx.get('last_7_days_invoices'):\n"
+"                                % for inv in ctx['last_7_days_invoices']:\n"
+"                                    <!--<li> [Date] : [Client] - [Montant HTVA]</li>-->\n"
+"                                    <li> ${inv[0]} : ${inv[1]} - ${inv[2]} ${inv[3]}</li>\n"
+"                                % endfor\n"
+"                            % else:\n"
+"                                <li></li>\n"
+"                            % endif\n"
+"                        </ul>\n"
+"                        </div>\n"
+"\n"
+"                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">TASKS FOR NEXT 7 DAYS</div>\n"
+"                        <div style=\"font-size: 15px;\">\n"
+"                        <ul>\n"
+"                            <!--<li> [Toutes les tâches prévues dans les 7 prochains jours comme pour le mail]</li>-->\n"
+"                            % if ctx.get('next_7_days_tasks'):\n"
+"                                % for task in ctx['next_7_days_tasks']:\n"
+"                                    <!--<li> [Date] : [Client] - [Titre de l'activité] </li>-->\n"
+"                                    <li> ${task[0]} : ${task[1]} - ${task[2]}</li>\n"
+"                                % endfor\n"
+"                            % else:\n"
+"                                <li></li>\n"
+"                            % endif\n"
+"                        </ul>\n"
+"                        </div>\n"
+"\n"
+"                </html>\n"
+"            "
+msgstr "<html>\n"
+"                        <link href=\"https://fonts.googleapis.com/css?family=Poppins|Roboto+Slab&display=swap\" rel=\"stylesheet\">\n"
+"                        <div style=\"font-family: 'Roboto Slab'; font-size: 12px; color: rgb(34, 34, 34);\">\n"
+"                        <br/>\n"
+"                        <div style=\"font-family: Poppins; font-size: 24px; font-weight: 700;color: #3d5285;\">${ctx['subject']|safe}</div>\n"
+"\n"
+"                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">Nouveau Pistes</div>\n"
+"                        <div style=\"font-size: 15px;\">\n"
+"                        <ul>\n"
+"                            <!--<li> [Tous les leads créer dans les 7 derniers jours et assignés à la personne]</li>-->\n"
+"                            % if ctx.get('last_7_days_lead'):\n"
+"                                % for lead in ctx['last_7_days_lead']:\n"
+"                                    <!--<li> [Date] : [Client] - [Nom du lead] </li>-->\n"
+"                                    <li>${lead[0]} : ${lead[1]} - ${lead[2]}</li>\n"
+"                                % endfor\n"
+"                            % else:\n"
+"                                <li></li>\n"
+"                            % endif\n"
+"                        </ul>\n"
+"                        </div>\n"
+"\n"
+"                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">Factures</div>\n"
+"                        <div style=\"font-size: 15px;\">\n"
+"                        <ul>\n"
+"                            <!--<li> [Toutes les factures crées par l'utilisateur dans les 7 derniers jours]</li>-->\n"
+"                            % if ctx.get('last_7_days_invoices'):\n"
+"                                % for inv in ctx['last_7_days_invoices']:\n"
+"                                    <!--<li> [Date] : [Client] - [Montant HTVA]</li>-->\n"
+"                                    <li> ${inv[0]} : ${inv[1]} - ${inv[2]} ${inv[3]}</li>\n"
+"                                % endfor\n"
+"                            % else:\n"
+"                                <li></li>\n"
+"                            % endif\n"
+"                        </ul>\n"
+"                        </div>\n"
+"\n"
+"                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">Tâches pour les 7 prochains jours</div>\n"
+"                        <div style=\"font-size: 15px;\">\n"
+"                        <ul>\n"
+"                            <!--<li> [Toutes les tâches prévues dans les 7 prochains jours comme pour le mail]</li>-->\n"
+"                            % if ctx.get('next_7_days_tasks'):\n"
+"                                % for task in ctx['next_7_days_tasks']:\n"
+"                                    <!--<li> [Date] : [Client] - [Titre de l'activité] </li>-->\n"
+"                                    <li> ${task[0]} : ${task[1]} - ${task[2]}</li>\n"
+"                                % endfor\n"
+"                            % else:\n"
+"                                <li></li>\n"
+"                            % endif\n"
+"                        </ul>\n"
+"                        </div>\n"
+"\n"
+"                </html>\n"
+"            "
+
+#. module: altissia_crm
+#: model:ir.model.fields,field_description:altissia_crm.field_res_partner_is_active
+msgid "Active during last 2 years"
+msgstr "Actif pendant les 2 dernières années"
+
+#. module: altissia_crm
+#: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_tree_view
+msgid "Avg. of Probability"
+msgstr ""
+
+#. module: altissia_crm
+#: model:ir.model.fields,field_description:altissia_crm.field_mail_compose_message_email_cc
+msgid "Cc"
+msgstr "Cc"
+
+#. module: altissia_crm
+#: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_tree_view
 msgid "Customer"
 msgstr "Client"
 
 #. module: altissia_crm
-#: field:crm.lead,website:0
-msgid "Website"
-msgstr "Site web"
+#: model:ir.model,name:altissia_crm.model_email_template_preview
+msgid "Email Template Preview"
+msgstr "Prévisualiser le template du mail"
 
 #. module: altissia_crm
-#: help:crm.lead,website:0
-msgid "Website of Partner or Company"
-msgstr "Site web du partenaire ou de la compagnie"
+#: model:ir.model,name:altissia_crm.model_mail_template
+msgid "Email Templates"
+msgstr "Template d'Email"
 
 #. module: altissia_crm
-#: view:crm.lead:0
-msgid "e.g. Call for proposal"
-msgstr "p. ex. appel d'offres"
+#: model:ir.model,name:altissia_crm.model_mail_compose_message
+msgid "Email composition wizard"
+msgstr "Assistant de composition d'Email"
 
 #. module: altissia_crm
-#: view:crm.lead:0
-msgid "{'default_name': contact_name, 'default_street': street, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_function': function, 'default_phone': phone, 'default_mobile': mobile, 'default_fax': fax, 'default_email': email_from, 'default_user_id': user_id, 'default_team_id': team_id, 'default_website': website}"
-msgstr "{'default_name': contact_name, 'default_street': street, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_function': function, 'default_phone': phone, 'default_mobile': mobile, 'default_fax': fax, 'default_email': email_from, 'default_user_id': user_id, 'default_team_id': team_id, 'default_website': website}"
-
-#. module: altissia_crm
-#: view:crm.lead:0
-msgid "Opportunities"
-msgstr "Opportunités"
-
-#. module: altissia_crm
-#: view:crm.lead:0
+#: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_tree_view
 msgid "Expected Revenues"
 msgstr "Revenus attendus"
 
@@ -56,29 +181,77 @@ msgid "Lead/Opportunity"
 msgstr "Piste/opportunité"
 
 #. module: altissia_crm
-#: view:crm.lead:0
+#: code:addons/altissia_crm/crm_lead.py:102
+#, python-format
+msgid "Leads"
+msgstr "Pistes"
+
+#. module: altissia_crm
 #: model:ir.actions.act_window,name:altissia_crm.lead_opportunity_act_window
 #: model:ir.ui.menu,name:altissia_crm.menu_crm_leads_and_opp
+#: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_calendar_view
 msgid "Leads & Opportunities"
-msgstr "Pistes et opportunités"
+msgstr "Pistes & opportunités"
 
 #. module: altissia_crm
-#: model:ir.model,name:altissia_crm.model_res_partner
-msgid "Partner"
-msgstr "Partenaire"
+#: model:ir.ui.view,arch_db:altissia_crm.crm_opportunity_report_view_search
+msgid "Lost"
+msgstr "Perdu"
 
 #. module: altissia_crm
-#: field:res.partner,is_active:0
-msgid "Active during last 2 years"
-msgstr "Actif pendant les 2 dernières années"
+#: model:ir.model.fields,field_description:altissia_crm.field_crm_lead_lost_visible
+msgid "Lost visible"
+msgstr "Perdu visible"
 
 #. module: altissia_crm
-#: view:crm.lead:0
+#: model:ir.model,name:altissia_crm.model_mail_message
+msgid "Message"
+msgstr "Message"
+
+#. module: altissia_crm
+#: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_tree_view
+msgid "Open Form View"
+msgstr "Ouvrir le formulaire"
+
+#. module: altissia_crm
+#: code:addons/altissia_crm/crm_lead.py:105
+#: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_tree_view
+#, python-format
+msgid "Opportunities"
+msgstr "Opportunités"
+
+#. module: altissia_crm
+#: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_tree_view
 msgid "Opportunity"
 msgstr "Opportunité"
 
 #. module: altissia_crm
-#: view:crm.lead:0
-msgid "Open Form View"
-msgstr "Ouvrir le formulaire"
+#: model:ir.model,name:altissia_crm.model_mail_mail
+msgid "Outgoing Mails"
+msgstr "Courriel Sortant"
 
+#. module: altissia_crm
+#: model:ir.model,name:altissia_crm.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: altissia_crm
+#: model:ir.actions.server,name:altissia_crm.action_crm_sales_report_mail
+#: model:ir.ui.menu,name:altissia_crm.menu_sale_report_mail
+msgid "Sales Report"
+msgstr "Rapport des ventes"
+
+#. module: altissia_crm
+#: model:ir.model.fields,field_description:altissia_crm.field_crm_lead_website
+msgid "Website"
+msgstr "siteweb"
+
+#. module: altissia_crm
+#: model:ir.model.fields,help:altissia_crm.field_crm_lead_website
+msgid "Website of Partner or Company"
+msgstr ""
+
+#. module: altissia_crm
+#: model:ir.ui.view,arch_db:altissia_crm.crm_case_form_view_leads
+msgid "e.g. Call for proposal"
+msgstr "p.ex. appel d'offres"

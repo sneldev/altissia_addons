@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_crm_sales_report_mail" model="ir.actions.server">
+            <field name="name">Sales Report</field>
+            <field name="model_id" ref="altissia_crm.model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">action = model.get_mail_compose_message()</field>
+            <field eval="True" name="condition"/>
+        </record>
+
+    <menuitem name="Sales Report" action="action_crm_sales_report_mail"
+            id="menu_sale_report_mail" parent="sales_team.menu_base_partner"
+            sequence="6"/>
+
+</odoo>
