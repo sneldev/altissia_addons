@@ -1,0 +1,118 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* crm_activity_mailing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e-20161126\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-20 11:08+0000\n"
+"PO-Revision-Date: 2019-05-20 11:08+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: crm_activity_mailing
+#: code:addons/crm_activity_mailing/models/res_users.py:168
+#, python-format
+msgid " \n"
+"                                    <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #3d5285;\">Future tasks</div>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>	\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Lead</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Date</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Activity Type</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Summary</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Link</td>\n"
+"                                    </tr>\n"
+"                                "
+msgstr " \n"
+"                                    <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #3d5285;\">Tâches futures</div>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>	\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Piste</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Date</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Type d'activité</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Résumé</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Lien</td>\n"
+"                                    </tr>\n"
+"                                "
+
+#. module: crm_activity_mailing
+#: code:addons/crm_activity_mailing/models/res_users.py:88
+#, python-format
+msgid " \n"
+"                                    <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #3d5285;\">Late tasks</div>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>	\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Lead</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Date</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Activity Type</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Summary</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Link</td>\n"
+"                                    </tr>\n"
+"                                "
+msgstr " \n"
+"                                    <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #3d5285;\">Tâches en retard </div>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>	\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Piste</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Date</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Type d'activité</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Résumé</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Lien</td>\n"
+"                                    </tr>\n"
+"                                "
+
+#. module: crm_activity_mailing
+#: code:addons/crm_activity_mailing/models/res_users.py:128
+#, python-format
+msgid " \n"
+"                                    <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #3d5285;\">Tasks in the next 7 days</div>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>	\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Lead</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Date</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Activity Type</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Summary</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Link</td>\n"
+"                                    </tr>\n"
+"                                "
+msgstr " \n"
+"                                    <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #3d5285;\">Tâches dans les 7 prochaines jours</div>\n"
+"                                    <table style=\"border-collapse:collapse; border-spacing:0;width:90%\">\n"
+"                                    <tr>	\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Piste</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Date</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Type d'activité</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Résumé</td>\n"
+"                                        <td style=\"padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;font-weight:bold;background-color:#f0f0f0;vertical-align:top\">Lien</td>\n"
+"                                    </tr>\n"
+"                                "
+
+#. module: crm_activity_mailing
+#: code:addons/crm_activity_mailing/models/res_users.py:115
+#: code:addons/crm_activity_mailing/models/res_users.py:155
+#: code:addons/crm_activity_mailing/models/res_users.py:195
+#, python-format
+msgid "Open Activity"
+msgstr "Allez vers l'activité"
+
+#. module: crm_activity_mailing
+#: model:ir.model.fields,field_description:crm_activity_mailing.field_res_users_task_summary_mail
+msgid "Receive tasks summary email"
+msgstr "Reçevoir les tâches par mail"
+
+#. module: crm_activity_mailing
+#: model:ir.model,name:crm_activity_mailing.model_res_users
+msgid "Users"
+msgstr "Utilisateur"
+
+#. module: crm_activity_mailing
+#: code:addons/crm_activity_mailing/models/res_users.py:207
+#, python-format
+msgid "Your CRM Activities - %s"
+msgstr "Vos activités CRM - %s"

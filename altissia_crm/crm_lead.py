@@ -22,6 +22,7 @@ from openerp.fields import Char
 from openerp.fields import Boolean
 from openerp.models import Model, TransientModel, api, _
 from openerp import fields
+
 from datetime import datetime, date, timedelta
 
 class CrmLead(Model):

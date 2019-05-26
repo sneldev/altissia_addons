@@ -261,6 +261,12 @@ msgid "<strong>Fiscal Position Remark:</strong>"
 msgstr "<strong>Remarque Position Fiscale:</strong>"
 
 
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_invoice_line_proj_start_date
+msgid "Project Start Date"
+msgstr "Date début du projet"
+
+
 
 
 
