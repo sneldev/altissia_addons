@@ -43,7 +43,7 @@ class CrmLead(Model):
             create_date = fields.Date.from_string(inv.create_date)
             if date.today() + timedelta(days=-7) < create_date <= date.today():
                 inv_create_date = str(datetime.strptime(inv.create_date, '%Y-%m-%d %H:%M:%S').date())
-                last_7_days_invoices.append((inv_create_date or ' _ ', inv.partner_id.name or ' _ ', inv.amount_untaxed or ' _ ', inv.currency_id.symbol or ' _ '))
+                last_7_days_invoices.append((inv_create_date or ' _ ', inv.partner_id.name or ' _ ', inv.amount_untaxed_signed or ' _ ', inv.currency_id.symbol or ' _ '))
 
         for task in self.env['crm.lead'].search([('type','=','opportunity'), ('date_action', '!=', False),('user_id','=',self.env.uid)]):
             date_action = fields.Date.from_string(task.date_action)
