@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e-20161126\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-23 10:51+0000\n"
-"PO-Revision-Date: 2019-05-23 10:51+0000\n"
+"POT-Creation-Date: 2019-07-01 11:48+0000\n"
+"PO-Revision-Date: 2019-07-01 11:48+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: altissia_crm
-#: code:addons/altissia_crm/crm_lead.py:70
+#: code:addons/altissia_crm/crm_lead.py:75
 #, python-format
 msgid " Sales Report "
 msgstr " Rapport des ventes "
@@ -24,7 +24,7 @@ msgstr " Rapport des ventes "
 #. module: altissia_crm
 #: model:mail.template,subject:altissia_crm.mail_template_crm_sale_report_mail
 msgid "${ctx['subject']|safe}"
-msgstr ""
+msgstr "${ctx['subject']|safe}"
 
 #. module: altissia_crm
 #: model:mail.template,body_html:altissia_crm.mail_template_crm_sale_report_mail
@@ -37,11 +37,9 @@ msgid "<html>\n"
 "                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">NEW LEADS</div>\n"
 "                        <div style=\"font-size: 15px;\">\n"
 "                        <ul>\n"
-"                            <!--<li> [Tous les leads créer dans les 7 derniers jours et assignés à la personne]</li>-->\n"
 "                            % if ctx.get('last_7_days_lead'):\n"
 "                                % for lead in ctx['last_7_days_lead']:\n"
-"                                    <!--<li> [Date] : [Client] - [Nom du lead] </li>-->\n"
-"                                    <li>${lead[0]} : ${lead[1]} - ${lead[2]}</li>\n"
+"                                    <li>${lead[0]} : ${lead[1]} ->  ${lead[2]}</li>\n"
 "                                % endfor\n"
 "                            % else:\n"
 "                                <li></li>\n"
@@ -52,11 +50,9 @@ msgid "<html>\n"
 "                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">INVOICES</div>\n"
 "                        <div style=\"font-size: 15px;\">\n"
 "                        <ul>\n"
-"                            <!--<li> [Toutes les factures crées par l'utilisateur dans les 7 derniers jours]</li>-->\n"
 "                            % if ctx.get('last_7_days_invoices'):\n"
 "                                % for inv in ctx['last_7_days_invoices']:\n"
-"                                    <!--<li> [Date] : [Client] - [Montant HTVA]</li>-->\n"
-"                                    <li> ${inv[0]} : ${inv[1]} - ${inv[2]} ${inv[3]}</li>\n"
+"                                    <li> ${inv[0]} : ${inv[1]} ->  ${inv[2]} ${inv[3]}</li>\n"
 "                                % endfor\n"
 "                            % else:\n"
 "                                <li></li>\n"
@@ -67,11 +63,22 @@ msgid "<html>\n"
 "                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">TASKS FOR NEXT 7 DAYS</div>\n"
 "                        <div style=\"font-size: 15px;\">\n"
 "                        <ul>\n"
-"                            <!--<li> [Toutes les tâches prévues dans les 7 prochains jours comme pour le mail]</li>-->\n"
 "                            % if ctx.get('next_7_days_tasks'):\n"
 "                                % for task in ctx['next_7_days_tasks']:\n"
-"                                    <!--<li> [Date] : [Client] - [Titre de l'activité] </li>-->\n"
-"                                    <li> ${task[0]} : ${task[1]} - ${task[2]}</li>\n"
+"                                    <li> ${task[0]} : ${task[1]} ->  ${task[2]}</li>\n"
+"                                % endfor\n"
+"                            % else:\n"
+"                                <li></li>\n"
+"                            % endif\n"
+"                        </ul>\n"
+"                        </div>\n"
+"\n"
+"                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">MEETINGS FOR THE LAST 7 DAYS</div>\n"
+"                        <div style=\"font-size: 15px;\">\n"
+"                        <ul>\n"
+"                            % if ctx.get('last_7_days_meeting'):\n"
+"                                % for task in ctx['last_7_days_meeting']:\n"
+"                                    <li> ${task[0]} : ${task[1]} ->  ${task[2]}</li>\n"
 "                                % endfor\n"
 "                            % else:\n"
 "                                <li></li>\n"
@@ -90,11 +97,9 @@ msgstr "<html>\n"
 "                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">Nouveau Pistes</div>\n"
 "                        <div style=\"font-size: 15px;\">\n"
 "                        <ul>\n"
-"                            <!--<li> [Tous les leads créer dans les 7 derniers jours et assignés à la personne]</li>-->\n"
 "                            % if ctx.get('last_7_days_lead'):\n"
 "                                % for lead in ctx['last_7_days_lead']:\n"
-"                                    <!--<li> [Date] : [Client] - [Nom du lead] </li>-->\n"
-"                                    <li>${lead[0]} : ${lead[1]} - ${lead[2]}</li>\n"
+"                                    <li>${lead[0]} : ${lead[1]} ->  ${lead[2]}</li>\n"
 "                                % endfor\n"
 "                            % else:\n"
 "                                <li></li>\n"
@@ -105,11 +110,9 @@ msgstr "<html>\n"
 "                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">Factures</div>\n"
 "                        <div style=\"font-size: 15px;\">\n"
 "                        <ul>\n"
-"                            <!--<li> [Toutes les factures crées par l'utilisateur dans les 7 derniers jours]</li>-->\n"
 "                            % if ctx.get('last_7_days_invoices'):\n"
 "                                % for inv in ctx['last_7_days_invoices']:\n"
-"                                    <!--<li> [Date] : [Client] - [Montant HTVA]</li>-->\n"
-"                                    <li> ${inv[0]} : ${inv[1]} - ${inv[2]} ${inv[3]}</li>\n"
+"                                    <li> ${inv[0]} : ${inv[1]} ->  ${inv[2]} ${inv[3]}</li>\n"
 "                                % endfor\n"
 "                            % else:\n"
 "                                <li></li>\n"
@@ -120,11 +123,22 @@ msgstr "<html>\n"
 "                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">Tâches pour les 7 prochains jours</div>\n"
 "                        <div style=\"font-size: 15px;\">\n"
 "                        <ul>\n"
-"                            <!--<li> [Toutes les tâches prévues dans les 7 prochains jours comme pour le mail]</li>-->\n"
 "                            % if ctx.get('next_7_days_tasks'):\n"
 "                                % for task in ctx['next_7_days_tasks']:\n"
-"                                    <!--<li> [Date] : [Client] - [Titre de l'activité] </li>-->\n"
-"                                    <li> ${task[0]} : ${task[1]} - ${task[2]}</li>\n"
+"                                    <li> ${task[0]} : ${task[1]} ->  ${task[2]}</li>\n"
+"                                % endfor\n"
+"                            % else:\n"
+"                                <li></li>\n"
+"                            % endif\n"
+"                        </ul>\n"
+"                        </div>\n"
+"\n"
+"                        <div style=\"font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;\">RÉUNIONS DES 7 DERNIERS JOURS</div>\n"
+"                        <div style=\"font-size: 15px;\">\n"
+"                        <ul>\n"
+"                            % if ctx.get('last_7_days_meeting'):\n"
+"                                % for task in ctx['last_7_days_meeting']:\n"
+"                                    <li> ${task[0]} : ${task[1]} ->  ${task[2]}</li>\n"
 "                                % endfor\n"
 "                            % else:\n"
 "                                <li></li>\n"
@@ -143,12 +157,12 @@ msgstr "Actif pendant les 2 dernières années"
 #. module: altissia_crm
 #: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_tree_view
 msgid "Avg. of Probability"
-msgstr ""
+msgstr "Moyenne de probabilité"
 
 #. module: altissia_crm
 #: model:ir.model.fields,field_description:altissia_crm.field_mail_compose_message_email_cc
 msgid "Cc"
-msgstr "Cc"
+msgstr "Copie à (CC)"
 
 #. module: altissia_crm
 #: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_tree_view
@@ -158,17 +172,17 @@ msgstr "Client"
 #. module: altissia_crm
 #: model:ir.model,name:altissia_crm.model_email_template_preview
 msgid "Email Template Preview"
-msgstr "Prévisualiser le template du mail"
+msgstr "Aperçu du modèle de courriel"
 
 #. module: altissia_crm
 #: model:ir.model,name:altissia_crm.model_mail_template
 msgid "Email Templates"
-msgstr "Template d'Email"
+msgstr "Modèles de courriels"
 
 #. module: altissia_crm
 #: model:ir.model,name:altissia_crm.model_mail_compose_message
 msgid "Email composition wizard"
-msgstr "Assistant de composition d'Email"
+msgstr "Assistant de composition de courriel"
 
 #. module: altissia_crm
 #: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_tree_view
@@ -181,7 +195,7 @@ msgid "Lead/Opportunity"
 msgstr "Piste/opportunité"
 
 #. module: altissia_crm
-#: code:addons/altissia_crm/crm_lead.py:102
+#: code:addons/altissia_crm/crm_lead.py:108
 #, python-format
 msgid "Leads"
 msgstr "Pistes"
@@ -191,7 +205,7 @@ msgstr "Pistes"
 #: model:ir.ui.menu,name:altissia_crm.menu_crm_leads_and_opp
 #: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_calendar_view
 msgid "Leads & Opportunities"
-msgstr "Pistes & opportunités"
+msgstr "Pistes et opportunités"
 
 #. module: altissia_crm
 #: model:ir.ui.view,arch_db:altissia_crm.crm_opportunity_report_view_search
@@ -214,7 +228,7 @@ msgid "Open Form View"
 msgstr "Ouvrir le formulaire"
 
 #. module: altissia_crm
-#: code:addons/altissia_crm/crm_lead.py:105
+#: code:addons/altissia_crm/crm_lead.py:111
 #: model:ir.ui.view,arch_db:altissia_crm.crm_lead_all_tree_view
 #, python-format
 msgid "Opportunities"
@@ -228,12 +242,12 @@ msgstr "Opportunité"
 #. module: altissia_crm
 #: model:ir.model,name:altissia_crm.model_mail_mail
 msgid "Outgoing Mails"
-msgstr "Courriel Sortant"
+msgstr "Courriels à envoyer"
 
 #. module: altissia_crm
 #: model:ir.model,name:altissia_crm.model_res_partner
 msgid "Partner"
-msgstr ""
+msgstr "Partenaire"
 
 #. module: altissia_crm
 #: model:ir.actions.server,name:altissia_crm.action_crm_sales_report_mail
@@ -244,12 +258,12 @@ msgstr "Rapport des ventes"
 #. module: altissia_crm
 #: model:ir.model.fields,field_description:altissia_crm.field_crm_lead_website
 msgid "Website"
-msgstr "siteweb"
+msgstr "Site web"
 
 #. module: altissia_crm
 #: model:ir.model.fields,help:altissia_crm.field_crm_lead_website
 msgid "Website of Partner or Company"
-msgstr ""
+msgstr "Site web du partenaire ou de la compagnie"
 
 #. module: altissia_crm
 #: model:ir.ui.view,arch_db:altissia_crm.crm_case_form_view_leads

@@ -55,6 +55,19 @@
                         </ul>
                         </div>
 
+                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">MEETINGS FOR THE LAST 7 DAYS</div>
+                        <div style="font-size: 15px;">
+                        <ul>
+                            % if ctx.get('last_7_days_meeting'):
+                                % for task in ctx['last_7_days_meeting']:
+                                    <li> ${task[0]} : ${task[1]} ->  ${task[2]}</li>
+                                % endfor
+                            % else:
+                                <li></li>
+                            % endif
+                        </ul>
+                        </div>
+
                 </html>
             ]]></field>
         </record>
