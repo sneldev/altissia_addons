@@ -93,7 +93,7 @@
                                 <td><span t-field="o.name"/></td>
                             </tr>
                             <tr t-if="o.date_invoice">
-                                <td><strong>Date:</strong></td>
+                                <td><strong>Date: </strong></td>
                                 <td><span t-field="o.date_invoice"/></td>
                             </tr>
                             <tr t-if="o.origin">
