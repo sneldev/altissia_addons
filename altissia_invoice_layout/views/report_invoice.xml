@@ -93,7 +93,7 @@
                                 <td><span t-field="o.name"/></td>
                             </tr>
                             <tr t-if="o.date_invoice">
-                                <td><strong>Date:</strong></td>
+                                <td><strong>Date: </strong></td>
                                 <td><span t-field="o.date_invoice"/></td>
                             </tr>
                             <tr t-if="o.origin">
@@ -117,7 +117,7 @@
                 <thead class="invoice_thead" style="border:1px solid black">
                     <tr>
                         <th>Description</th>
-                        <th>Project Start Date</th>
+                        <th>Start Date</th>
                         <th>Quantity</th>
                         <th class="text-right">Unit Price</th>
                         <th class="text-right" groups="sale.group_discount_per_so_line">Discount (%)</th>

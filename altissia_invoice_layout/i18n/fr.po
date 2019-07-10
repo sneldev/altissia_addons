@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e-20161126\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-30 09:49+0000\n"
-"PO-Revision-Date: 2018-05-30 09:49+0000\n"
+"POT-Creation-Date: 2019-07-01 09:30+0000\n"
+"PO-Revision-Date: 2019-07-01 09:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "IBAN:"
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,help:altissia_invoice_layout.field_res_company_invoice_footer
 msgid "ALtissia Custom Invoice Footer"
-msgstr ""
+msgstr "ALtissia Custom Invoice Footer"
 
 #. module: altissia_invoice_layout
 #: model:ir.model,name:altissia_invoice_layout.model_res_partner_bank
@@ -46,21 +46,9 @@ msgid "Cancelled Invoice"
 msgstr "Facture annulée"
 
 #. module: altissia_invoice_layout
-#: code:addons/altissia_invoice_layout/models/account_invoice.py:46
-#, python-format
-msgid "Cannot refund draft/proforma/cancelled invoice."
-msgstr ""
-
-#. module: altissia_invoice_layout
-#: code:addons/altissia_invoice_layout/models/account_invoice.py:48
-#, python-format
-msgid "Cannot refund invoice which is already reconciled, invoice should be unreconciled first. You can only refund this invoice."
-msgstr ""
-
-#. module: altissia_invoice_layout
 #: model:ir.model,name:altissia_invoice_layout.model_res_company
 msgid "Companies"
-msgstr "Entreprises"
+msgstr "Sociétés"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_invoice_partner_company
@@ -94,15 +82,14 @@ msgid "Invoice Footer"
 msgstr "Pied du Facture"
 
 #. module: altissia_invoice_layout
-#: model:ir.model,name:altissia_invoice_layout.model_account_invoice_refund
-msgid "Invoice Refund"
-msgstr "Facture d'avoir"
+#: model:ir.model,name:altissia_invoice_layout.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Ligne de facture"
 
 #. module: altissia_invoice_layout
-#: code:addons/altissia_invoice_layout/models/account_invoice.py:110
-#, python-format
-msgid "Invoice refund"
-msgstr "Facture d'avoir"
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.inherited_invoice_form
+msgid "Invoice Lines"
+msgstr "Lignes de factures"
 
 #. module: altissia_invoice_layout
 #: model:ir.model,name:altissia_invoice_layout.model_account_journal
@@ -126,7 +113,6 @@ msgstr "Instructions de paiement:"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_partner_person_name
-#: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_users_person_name
 msgid "Person Name"
 msgstr "Nom du personne"
 
@@ -141,14 +127,20 @@ msgid "Refund"
 msgstr "Avoir"
 
 #. module: altissia_invoice_layout
-#: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_journal_journal_refund_id
-msgid "Refund Journal"
-msgstr ""
-
-#. module: altissia_invoice_layout
 #: model:ir.model.fields,help:altissia_invoice_layout.field_account_invoice_use_parent_address
 msgid "Select this if you want to use customer's address  information as delivery address"
-msgstr ""
+msgstr "Select this if you want to use customer's address  information as delivery address"
+
+#. module: altissia_invoice_layout
+#: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_invoice_line_proj_start_date
+msgid "Start Date"
+msgstr "Date de début"
+
+#. module: altissia_invoice_layout
+#: code:addons/altissia_invoice_layout/models/account_invoice.py:71
+#, python-format
+msgid "Start Date field must be filled !"
+msgstr "Le champ Date de début doit être rempli !"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
@@ -158,23 +150,37 @@ msgstr "Facture fournisseur"
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.external_layout_header
 msgid "Supplier Refund"
-msgstr "Avoir Fournisseur"
+msgstr "Avoir fournisseur"
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.view_account_config_refund_journal
+msgid "Update Journals refund sequence"
+msgstr "Update Journals refund sequence"
+
+#. module: altissia_invoice_layout
+#: model:ir.actions.server,name:altissia_invoice_layout.action_update_refund_journal_sequence
+msgid "Update refund sequence"
+msgstr "Update refund sequence"
+
+#. module: altissia_invoice_layout
+#: model:ir.ui.view,arch_db:altissia_invoice_layout.view_account_config_refund_journal
+msgid "Update sequences"
+msgstr "Update sequences"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_invoice_use_parent_address
 msgid "Use Customer Address for Delivery"
-msgstr ""
+msgstr "Use Customer Address for Delivery"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_partner_vat_display
-#: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_users_vat_display
 msgid "Vat Display"
-msgstr ""
+msgstr "Vat Display"
 
 #. module: altissia_invoice_layout
 #: model:ir.model.fields,field_description:altissia_invoice_layout.field_res_company_vat_display
 msgid "Vat Number (display)"
-msgstr ""
+msgstr "Vat Number (display)"
 
 #. module: altissia_invoice_layout
 #: model:ir.ui.view,arch_db:altissia_invoice_layout.style
@@ -194,82 +200,29 @@ msgid "body {\n"
 "    .zero_min_height {\n"
 "        min-height: 0px !important;\n"
 "    }"
-msgstr ""
+msgstr "body {\n"
+"        color: #000 !important;\n"
+"        word-wrap: break-word;\n"
+"    }\n"
+"    .border-black td {\n"
+"        border-top: 1px solid black !important;\n"
+"    }\n"
+"    .table-condensed &gt; thead &gt; tr &gt; th {\n"
+"        border-bottom: 1px solid black !important;\n"
+"    }\n"
+"    .table-condensed &gt; tbody &gt; tr {\n"
+"        page-break-inside: avoid !important;\n"
+"    }\n"
+"    .zero_min_height {\n"
+"        min-height: 0px !important;\n"
+"    }"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "<span style=\"text-decoration: underline;\">Invoicing Address</span>"
-msgstr "<span style=\"text-decoration: underline;\">Adresse de facturation</span>"
+msgid "Start Date"
+msgstr "Date de début"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "<strong>VAT:</strong>"
-msgstr "<strong>TVA:</strong>"
-
-#. module: account
-#: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "<br/>\n"
-"                    <span><strong>Email:</strong> accounting@altissia.com</span><br/>\n"
-"                    <span><strong>Phone:</strong> +32(0)10.65.72.61</span><br/>"
-msgstr "<br/>\n"
-"                    <span><strong>Courriel:</strong> accounting@altissia.com</span><br/>\n"
-"                    <span><strong>Téléphone:</strong> +32(0)10.65.72.61</span><br/>"
-
-#. module: account
-#: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "VAT:"
-msgstr "TVA:"
-
-#. module: account
-#: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "<strong>Invoice number:</strong>"
-msgstr "<strong>Numéro de Facture:</strong>"
-
-#. module: account
-#: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "<strong>Customer Code:</strong>"
-msgstr "<strong>Code Client:</strong>"
-
-#. module: account
-#: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "<strong>To be paid before:</strong>"
-msgstr "<strong>A payer avant:</strong>"
-
-#. module: account
-#: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "<strong>Total Excl. VAT</strong>"
-msgstr "<strong>total hors TVA</strong>"
-
-#. module: account
-#: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "<strong>Total Incl. VAT</strong>"
-msgstr "<strong>total incluant TVA</strong>"
-
-#. module: account
-#: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "Total VAT"
-msgstr "Total TVA"
-
-#. module: account
-#: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "<strong>Comment:</strong>"
-msgstr "<strong>Commentaire:</strong>"
-
-#. module: account
-#: model:ir.ui.view,arch_db:account.report_invoice_document
-msgid "<strong>Fiscal Position Remark:</strong>"
-msgstr "<strong>Remarque Position Fiscale:</strong>"
-
-
-#. module: altissia_invoice_layout
-#: model:ir.model.fields,field_description:altissia_invoice_layout.field_account_invoice_line_proj_start_date
-msgid "Project Start Date"
-msgstr "Date début du projet"
-
-
-
-
-
-
-
-
+msgid "<strong>Date:</strong>"
+msgstr "<strong>Date:</strong>"
