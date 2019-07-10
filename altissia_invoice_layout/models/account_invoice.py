@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models, api
-
+from odoo import fields, models, api, _
+from odoo.exceptions import ValidationError
 
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
@@ -62,4 +62,11 @@ class AccountJournal(models.Model):
 class AccountInvoiceLine(models.Model):
     _inherit = "account.invoice.line"
 
-    proj_start_date = fields.Date(string="Project Start Date")
+    proj_start_date = fields.Date(string="Start Date")
+
+    @api.model
+    def create(self, vals):
+        invoice_line = super(AccountInvoiceLine, self).create(vals)
+        if invoice_line.invoice_id.state == 'draft' and not invoice_line.proj_start_date :
+            raise ValidationError(_('Start Date field must be filled !'))
+        return invoice_line
