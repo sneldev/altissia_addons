@@ -21,7 +21,7 @@
                         <ul>
                             % if ctx.get('last_7_days_lead'):
                                 % for lead in ctx['last_7_days_lead']:
-                                    <li>${lead[0]} : ${lead[1]} - ${lead[2]}</li>
+                                    <li>${lead[0]} : ${lead[1]} ->  ${lead[2]}</li>
                                 % endfor
                             % else:
                                 <li></li>
@@ -34,7 +34,7 @@
                         <ul>
                             % if ctx.get('last_7_days_invoices'):
                                 % for inv in ctx['last_7_days_invoices']:
-                                    <li> ${inv[0]} : ${inv[1]} - ${inv[2]} ${inv[3]}</li>
+                                    <li> ${inv[0]} : ${inv[1]} ->  ${inv[2]} ${inv[3]}</li>
                                 % endfor
                             % else:
                                 <li></li>
@@ -47,7 +47,20 @@
                         <ul>
                             % if ctx.get('next_7_days_tasks'):
                                 % for task in ctx['next_7_days_tasks']:
-                                    <li> ${task[0]} : ${task[1]} - ${task[2]}</li>
+                                    <li> ${task[0]} : ${task[1]} ->  ${task[2]}</li>
+                                % endfor
+                            % else:
+                                <li></li>
+                            % endif
+                        </ul>
+                        </div>
+
+                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">MEETINGS FOR THE LAST 7 DAYS</div>
+                        <div style="font-size: 15px;">
+                        <ul>
+                            % if ctx.get('last_7_days_meeting'):
+                                % for task in ctx['last_7_days_meeting']:
+                                    <li> ${task[0]} : ${task[1]} ->  ${task[2]}</li>
                                 % endfor
                             % else:
                                 <li></li>

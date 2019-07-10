@@ -30,10 +30,16 @@ class CrmLead(Model):
 
     @api.multi
     def get_mail_compose_message(self):
-
+        last_7_days_meeting = []
         last_7_days_lead = []
         last_7_days_invoices = []
         next_7_days_tasks = []
+
+        for meeting in self.env['calendar.event'].search([('user_id','=',self.env.uid)]) :
+            meeting_date = fields.Date.from_string(meeting.start)
+            if date.today() + timedelta(days=-7) < meeting_date <= date.today() :
+                lead_meeting_date = str(datetime.strptime(meeting.start, '%Y-%m-%d %H:%M:%S').date())
+                last_7_days_meeting.append((lead_meeting_date or ' _ ', meeting.name or ' _ ', meeting.description or ' _ '))
         for lead in self.env['crm.lead'].search([('user_id','=', self.env.uid)]):
             create_date = fields.Date.from_string(lead.create_date)
             if date.today() + timedelta(days=-7) < create_date <= date.today():
@@ -44,7 +50,7 @@ class CrmLead(Model):
             create_date = fields.Date.from_string(inv.create_date)
             if date.today() + timedelta(days=-7) < create_date <= date.today():
                 inv_create_date = str(datetime.strptime(inv.create_date, '%Y-%m-%d %H:%M:%S').date())
-                last_7_days_invoices.append((inv_create_date or ' _ ', inv.partner_id.name or ' _ ', inv.amount_untaxed or ' _ ', inv.currency_id.symbol or ' _ '))
+                last_7_days_invoices.append((inv_create_date or ' _ ', inv.partner_id.name or ' _ ', inv.amount_untaxed_signed or ' _ ', inv.currency_id.symbol or ' _ '))
 
         for task in self.env['crm.lead'].search([('type','=','opportunity'), ('date_action', '!=', False),('user_id','=',self.env.uid)]):
             date_action = fields.Date.from_string(task.date_action)
@@ -68,6 +74,7 @@ class CrmLead(Model):
             'default_template_id': template_id,
             'default_composition_mode': 'comment',
             'subject':self.env.user.name +_(' Sales Report ')+ datetime.today().date().strftime("%d/%m/%Y"),
+            'last_7_days_meeting':last_7_days_meeting,
             'last_7_days_lead':last_7_days_lead,
             'last_7_days_invoices':last_7_days_invoices,
             'next_7_days_tasks':next_7_days_tasks,
