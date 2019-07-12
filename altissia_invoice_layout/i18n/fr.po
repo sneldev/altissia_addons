@@ -137,7 +137,7 @@ msgid "Start Date"
 msgstr "Date de début"
 
 #. module: altissia_invoice_layout
-#: code:addons/altissia_invoice_layout/models/account_invoice.py:71
+#: code:addons/altissia_invoice_layout/models/account_invoice.py:36
 #, python-format
 msgid "Start Date field must be filled !"
 msgstr "Le champ Date de début doit être rempli !"

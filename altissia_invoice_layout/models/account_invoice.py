@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import fields, models, api, _
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
@@ -19,6 +19,22 @@ class AccountInvoice(models.Model):
 
     partner_company = fields.Many2one('res.partner',string="Customer Company",compute='_get_company_id')
 
+    @api.multi
+    def invoice_validate(self):
+        for invoice in self:
+            # refuse to validate a vendor bill/refund if there already exists one with the same reference for the same partner,
+            # because it's probably a double encoding of the same bill/refund
+            if invoice.type in ('in_invoice', 'in_refund') and invoice.reference:
+                if self.search([('type', '=', invoice.type), ('reference', '=', invoice.reference),
+                                ('company_id', '=', invoice.company_id.id),
+                                ('commercial_partner_id', '=', invoice.commercial_partner_id.id),
+                                ('id', '!=', invoice.id)]):
+                    raise UserError(_(
+                        "Duplicated vendor reference detected. You probably encoded twice the same vendor bill/refund."))
+            for line in invoice.invoice_line_ids:
+                if not line.proj_start_date :
+                    raise ValidationError(_('Start Date field must be filled !'))
+        return self.write({'state': 'open'})
 
 class AccountJournal(models.Model):
     _inherit = "account.journal"
@@ -64,9 +80,3 @@ class AccountInvoiceLine(models.Model):
 
     proj_start_date = fields.Date(string="Start Date")
 
-    @api.model
-    def create(self, vals):
-        invoice_line = super(AccountInvoiceLine, self).create(vals)
-        if invoice_line.invoice_id.state == 'draft' and not invoice_line.proj_start_date :
-            raise ValidationError(_('Start Date field must be filled !'))
-        return invoice_line
