@@ -67,6 +67,6 @@ class AccountInvoiceLine(models.Model):
     @api.model
     def create(self, vals):
         invoice_line = super(AccountInvoiceLine, self).create(vals)
-        if invoice_line.invoice_id.state == 'draft' and not invoice_line.proj_start_date :
-            raise ValidationError(_('Start Date field must be filled !'))
+        # if invoice_line.invoice_id.state == 'draft' and not invoice_line.proj_start_date :
+        #     raise ValidationError(_('Start Date field must be filled !'))
         return invoice_line
