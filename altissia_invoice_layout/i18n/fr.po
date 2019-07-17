@@ -216,3 +216,13 @@ msgstr "body {\n"
 "    .zero_min_height {\n"
 "        min-height: 0px !important;\n"
 "    }"
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "Start Date"
+msgstr "Date de début"
+
+#. module: account
+#: model:ir.ui.view,arch_db:account.report_invoice_document
+msgid "<strong>Date:</strong>"
+msgstr "<strong>Date:</strong>"

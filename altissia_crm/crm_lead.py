@@ -30,24 +30,33 @@ class CrmLead(Model):
 
     @api.multi
     def get_mail_compose_message(self):
-
+        last_7_days_meeting = []
         last_7_days_lead = []
         last_7_days_invoices = []
         next_7_days_tasks = []
+
+        for meeting in self.env['calendar.event'].search([('user_id','=',self.env.uid)]) :
+            meeting_date = fields.Date.from_string(meeting.start)
+            if date.today() + timedelta(days=-7) < meeting_date <= date.today() :
+                lead_meeting_date = str(datetime.strptime(meeting.start, '%Y-%m-%d %H:%M:%S').date())
+                last_7_days_meeting.append((lead_meeting_date or ' _ ', meeting.name or ' _ ', meeting.description or ' _ '))
         for lead in self.env['crm.lead'].search([('user_id','=', self.env.uid)]):
             create_date = fields.Date.from_string(lead.create_date)
             if date.today() + timedelta(days=-7) < create_date <= date.today():
-                last_7_days_lead.append((lead.create_date, lead.partner_id.name, lead.name))
+                lead_create_date = str(datetime.strptime(lead.create_date, '%Y-%m-%d %H:%M:%S').date())
+                last_7_days_lead.append((lead_create_date or ' _ ', lead.partner_id.name or ' _ ', lead.name or ' _ '))
 
         for inv in self.env['account.invoice'].search([('create_uid','=',self.env.uid)]):
             create_date = fields.Date.from_string(inv.create_date)
             if date.today() + timedelta(days=-7) < create_date <= date.today():
-                last_7_days_invoices.append((inv.create_date, inv.partner_id.name, inv.amount_untaxed))
+                inv_create_date = str(datetime.strptime(inv.create_date, '%Y-%m-%d %H:%M:%S').date())
+                last_7_days_invoices.append((inv_create_date or ' _ ', inv.partner_id.name or ' _ ', inv.amount_untaxed_signed or ' _ ', inv.currency_id.symbol or ' _ '))
 
         for task in self.env['crm.lead'].search([('type','=','opportunity'), ('date_action', '!=', False),('user_id','=',self.env.uid)]):
             date_action = fields.Date.from_string(task.date_action)
             if date.today() <= date_action <= date.today() + timedelta(days=7):
-                next_7_days_tasks.append((task.date_action, task.partner_id.name, task.title_action))
+                task_date_action = str(datetime.strptime(task.date_action, '%Y-%m-%d').date())
+                next_7_days_tasks.append((task_date_action or ' _ ', task.partner_id.name or ' _ ', task.title_action or ' _ '))
 
         ir_model_data = self.env['ir.model.data']
         try:
@@ -61,11 +70,11 @@ class CrmLead(Model):
         ctx = dict()
         ctx.update({
             'default_model': 'crm.lead',
-            # 'default_res_id': self.ids[0],
             'default_use_template': bool(template_id),
             'default_template_id': template_id,
             'default_composition_mode': 'comment',
             'subject':self.env.user.name +_(' Sales Report ')+ datetime.today().date().strftime("%d/%m/%Y"),
+            'last_7_days_meeting':last_7_days_meeting,
             'last_7_days_lead':last_7_days_lead,
             'last_7_days_invoices':last_7_days_invoices,
             'next_7_days_tasks':next_7_days_tasks,
@@ -145,16 +154,4 @@ class CrmLead(Model):
 
     website = Char('Website', size=64, help="Website of Partner or Company")
     lost_visible = Boolean(default=False ,compute='compute_lost_visible',store=False)
-    
-class Message(Model):
-
-    _name = 'mail.message'
-    _inherit = 'mail.message'
-
-    body = fields.Html('Contents', default='', sanitize=False)        
-
-    
-class MailComposeMessage(TransientModel):
-    _inherit = 'mail.compose.message'
-
-    body = fields.Html(sanitize=False)
+   
