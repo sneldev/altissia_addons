@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 class Users(models.Model):
     _inherit = "res.users"
 
-    task_summary_mail = fields.Boolean('Receive tasks summary email', default=False)
+    task_summary_mail = fields.Boolean('Receive tasks summary email', default=True)
 
     @api.model
     def crm_activity_mail_send(self):
