@@ -59,7 +59,9 @@
                 <div name='invoice_address' class="col-xs-5">
                     <br></br>
                     <div t-field="company.partner_id" t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
-                    <span t-if="company.vat"><strong>VAT:</strong> <span t-field="company.vat_display"/></span><br/>
+                    <span t-if="company.vat"><strong>VAT:</strong> <span t-field="company.vat_display"/></span>
+                    <span t-if="company.gsr_hst"><strong>GST/HST - TPS/TVH:</strong> <span t-field="company.gsr_hst"/><br/></span>
+                    <span t-if="company.qst"><strong>QST - TVQ:</strong> <span t-field="company.qst"/></span><br/>                    
                     <span><strong>Email:</strong> accounting@altissia.com</span><br/>
                     <span><strong>Phone:</strong> +32(0)10.65.72.61</span><br/>
                 </div>
@@ -152,31 +154,60 @@
                         <span t-field="o.date_due"/>
                     </p>
                 </div>
-                <div class="col-xs-4 col-xs-offset-4 pull-right">
-                    <table class="table table-condensed" style="border:1px solid black">
-                        <tr class="border-black">
-                            <td><strong>Total Excl. VAT</strong></td>
-                            <td class="text-right">
-                                <span t-if="o.type in ['out_refund']">-</span>
-                                <span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Total VAT</td>
-                            <td class="text-right">
-                                <span t-if="o.type in ['out_refund']">-</span>
-                                <span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
-                            </td>
-                        </tr>
-                        <tr class="border-black">
-                            <td><strong>Total Incl. VAT</strong></td>
-                            <td class="text-right">
-                                 <span t-if="o.type in ['out_refund']">-</span>
-                                 <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                <t t-if="not company.canadian_specific">
+                    <div class="col-xs-4 col-xs-offset-4 pull-right">
+                        <table class="table table-condensed" style="border:1px solid black">
+                            <tr class="border-black">
+                                <td><strong>Total Excl. VAT</strong></td>
+                                <td class="text-right">
+                                    <span t-if="o.type in ['out_refund']">-</span>
+                                    <span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total VAT</td>
+                                <td class="text-right">
+                                    <span t-if="o.type in ['out_refund']">-</span>
+                                    <span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                </td>
+                            </tr>
+                            <tr class="border-black">
+                                <td><strong>Total Incl. VAT</strong></td>
+                                <td class="text-right">
+                                     <span t-if="o.type in ['out_refund']">-</span>
+                                     <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+                <t t-if="company.canadian_specific">
+                    <div class="col-xs-4 col-xs-offset-4 pull-right">
+                        <table class="table table-condensed" style="border:1px solid black">
+                            <tr class="border-black">
+                                <td><strong>Sub Total CAD</strong></td>
+                                <td class="text-right">
+                                    <span t-if="o.type in ['out_refund']">-</span>
+                                    <span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total Taxes</td>
+                                <td class="text-right">
+                                    <span t-if="o.type in ['out_refund']">-</span>
+                                    <span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                </td>
+                            </tr>
+                            <tr class="border-black">
+                                <td><strong>Total CAD</strong></td>
+                                <td class="text-right">
+                                     <span t-if="o.type in ['out_refund']">-</span>
+                                     <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
             </div>
 
             <t t-if="o.tax_line_ids">
