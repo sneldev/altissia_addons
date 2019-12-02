@@ -16,3 +16,5 @@ class Company(models.Model):
 
     gst_hst = fields.Char("GST/HST - TPS/TVH")
     qst = fields.Char("QST - TVQ")
+    
+    canadian_specific = fields.Boolean("Canandian Specific", default=False)
