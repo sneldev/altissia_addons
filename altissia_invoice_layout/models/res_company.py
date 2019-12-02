@@ -13,3 +13,6 @@ class Company(models.Model):
     _inherit = 'res.company'
     invoice_footer = fields.Text('Invoice Footer', help="ALtissia Custom Invoice Footer")
     vat_display = fields.Char("Vat Number (display)", compute="_get_vat_display")
+    
+    gst_hst = fields.Char("GST/HST - TPS/TVH")
+    qst = fields.Char("QST - TVQ")
