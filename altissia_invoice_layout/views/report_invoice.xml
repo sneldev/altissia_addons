@@ -212,7 +212,7 @@
 
             <t t-if="o.tax_line_ids">
                 <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-6">
                         <!--p t-if="o.date_due" style="border:1px solid black">
                             <strong>To be paid before:</strong>
                             <span t-field="o.date_due"/>
