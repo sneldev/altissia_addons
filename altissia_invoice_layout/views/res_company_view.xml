@@ -10,7 +10,8 @@
                 <field name="website" position="after">
                     <field name="invoice_footer"/>
                 </field>
-                <field name="ape" position="after">
+                <field name="currency_id" position="before">
+                    <field name="canadian_specific"/>
                     <field name="gst_hst"/>
                     <field name="qst"/>
                 </field>                  
