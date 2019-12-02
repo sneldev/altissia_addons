@@ -67,9 +67,16 @@
                                 Payment instructions:<br/>
                                 <p t-foreach="company.bank_ids" t-as="b">
                                     <t t-if="b.footer">
-                                        <strong>Bank:</strong><span style="padding-right: 10px;" t-field="b.bank_name"/>
-                                        <strong>IBAN:</strong><span style="padding-right: 10px;" t-field="b.acc_number"/>
-                                        <strong>BIC:</strong><span t-field="b.bank_bic"/>
+                                        <t t-if="not company.canadian_specific">
+                                            <strong>Bank:</strong><span style="padding-right: 10px;" t-field="b.bank_name"/>
+                                            <strong>IBAN:</strong><span style="padding-right: 10px;" t-field="b.acc_number"/>
+                                            <strong>BIC:</strong><span t-field="b.bank_bic"/>
+                                        </t>
+                                        <t t-if="company.canadian_specific">
+                                            <strong>Bank:</strong><span style="padding-right: 10px;" t-field="b.bank_name"/>
+                                            <strong>Transit#:</strong><span style="padding-right: 10px;" t-field="b.bank_bic"/>
+                                            <strong>ACCT#:</strong><span t-field="b.acc_number"/>
+                                        </t>
                                     </t>
                                 </p>
                                 Please mention the invoice reference number in all communication:
