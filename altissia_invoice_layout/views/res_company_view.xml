@@ -10,6 +10,10 @@
                 <field name="website" position="after">
                     <field name="invoice_footer"/>
                 </field>
+                <field name="ape" position="after">
+                    <field name="gst_hst"/>
+                    <field name="qst"/>
+                </field>           
             </field>
         </record>
     </data>
