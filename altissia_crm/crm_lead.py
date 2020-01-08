@@ -147,7 +147,7 @@ class CrmLead(Model):
     @api.model
     def create(self, values):
         if values.get('stage_id'):
-            crm_stage_rec = self.env['crm.case.stage'].browse(values.get('stage_id'))
+            crm_stage_rec = self.env['crm.stage'].browse(values.get('stage_id'))
             values.update({'probability': crm_stage_rec.probability})
         return super(CrmLead, self).create(values)
 
