@@ -16,7 +16,12 @@
                         <div style="font-family: Poppins; font-size: 24px; font-weight: 700;color: #3d5285;">${ctx['subject']|safe}</div>
                         <div style="font-family: Poppins; font-size: 24px; font-weight: 700;color: #3d5285;">${ctx['sale_team']|safe}</div>
                         <div style="font-family: Poppins; font-size: 24px; font-weight: 700;color: #3d5285;">PAST WEEK</div>
-                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">1. NEW LEADS</div>
+
+                        % if ctx.get('count_last_7_days_lead'):
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">1. NEW LEADS (# ${ctx['count_last_7_days_lead']})</div>
+                        % else:
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">1. NEW LEADS </div>
+                        % endif
                         <div style="font-size: 15px;">
                         <ul>
                             % if ctx.get('last_7_days_lead'):
@@ -29,8 +34,18 @@
                         </ul>
                         </div>
 
-                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">2. MEETINGS OBTAINED (#)</div>
-                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #51679c;">With new opportunities (#)</div>
+                        % if ctx.get('count_last_7_days_meeting_opps'):
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">2. MEETINGS OBTAINED (# ${ctx['count_last_7_days_meeting_opps']})</div>
+                        % else:
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">2. MEETINGS OBTAINED </div>
+                        % endif
+
+                        % if ctx.get('count_last_7_days_meeting_new_opp'):
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #51679c;">With new opportunities (# ${ctx['count_last_7_days_meeting_new_opp']})</div>
+                        % else:
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #51679c;">With new opportunities</div>
+                        % endif
+
                         <div style="font-size: 15px;">
                         <ul>
                             % if ctx.get('last_7_days_meeting_new_opp'):
@@ -43,7 +58,12 @@
                         </ul>
                         </div>
 
-                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #51679c;">With existing opportunities (#)</div>
+                        % if ctx.get('count_last_7_days_meeting_not_new_opp'):
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #51679c;">With existing opportunities (# ctx['count_last_7_days_meeting_not_new_opp'])</div>
+                        % else:
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #51679c;">With existing opportunities </div>
+                        % endif
+
                         <div style="font-size: 15px;">
                         <ul>
                             % if ctx.get('last_7_days_meeting_not_new_opp'):
@@ -56,7 +76,12 @@
                         </ul>
                         </div>
 
-                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">3. MEETINGS ATTENDED (#)</div>
+                        % if ctx.get('count_last_7_days_meeting'):
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">3. MEETINGS ATTENDED (# ${ctx['count_last_7_days_meeting']})</div>
+                        % else:
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">3. MEETINGS ATTENDED </div>
+                        % endif
+
                         <div style="font-size: 15px;">
                         <ul>
                             % if ctx.get('last_7_days_meeting'):
@@ -69,12 +94,21 @@
                         </ul>
                         </div>
 
-                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">4. PROPOSALS SENT (#)</div>
+                        % if ctx.get('count_last_7_days_prop_lead'):
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">4. PROPOSALS SENT (# ${ctx['count_last_7_days_prop_lead']})</div>
+                        % else:
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">4. PROPOSALS SENT</div>
+                        % endif
+
                         <div style="font-size: 15px;">
                         <ul>
                             % if ctx.get('last_7_days_prop_lead'):
                                 % for prop_lead in ctx['last_7_days_prop_lead']:
-                                    <li> ${prop_lead[0]} - ${prop_lead[1]} -  ${prop_lead[2]} ${prop_lead[3]}</li>
+                                    % if (prop_lead[2] != ' _ '):
+                                        <li> ${prop_lead[0]} - ${prop_lead[1]} -  ${prop_lead[2]} ${prop_lead[3]}</li>
+                                    %else:
+                                        <li> ${prop_lead[0]} - ${prop_lead[1]} -  ${prop_lead[2]}</li>
+                                    % endif
                                 % endfor
                             % else:
                                 <li></li>
@@ -82,12 +116,21 @@
                         </ul>
                         </div>
 
-                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">5. INVOICES (#)</div>
+                        % if ctx.get('count_last_7_days_invoices'):
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">5. INVOICES (# ${ctx['count_last_7_days_invoices']})</div>
+                        % else:
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">5. INVOICES </div>
+                        % endif
+
                         <div style="font-size: 15px;">
                         <ul>
                             % if ctx.get('last_7_days_invoices'):
                                 % for inv in ctx['last_7_days_invoices']:
-                                    <li> ${inv[0]} - ${inv[1]} -  ${inv[2]} ${inv[3]}</li>
+                                    % if (inv[2] != ' _ '):
+                                        <li> ${inv[0]} - ${inv[1]} -  ${inv[2]} ${inv[3]}</li>
+                                    %else:
+                                        <li> ${inv[0]} - ${inv[1]} -  ${inv[2]}</li>
+                                    % endif
                                 % endfor
                             % else:
                                 <li></li>
@@ -96,7 +139,13 @@
                         </div>
 
                         <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #51679c;">Coming week</div>
-                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">1. MEETINGS PLANNED (#)</div>
+
+                        % if ctx.get('count_next_7_days_meeting'):
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">1. MEETINGS PLANNED (# ${ctx['count_next_7_days_meeting']})</div>
+                        % else:
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">1. MEETINGS PLANNED</div>
+                        % endif
+
                         <div style="font-size: 15px;">
                         <ul>
                             % if ctx.get('next_7_days_meeting'):
@@ -108,13 +157,20 @@
                             % endif
                         </ul>
                         </div>
-
-                        <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">2. TASKS PLANNED (#)</div>
+                        % if ctx.get('count_next_7_days_tasks'):
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">2. TASKS PLANNED (# ${ctx['count_next_7_days_tasks']} )</div>
+                        % else:
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #c1d72f;">2. TASKS PLANNED</div>
+                        % endif
                         <div style="font-size: 15px;">
                         <ul>
                             % if ctx.get('next_7_days_tasks'):
                                 % for task in ctx['next_7_days_tasks']:
-                                    <li> ${task[0]} - ${task[1]} -  ${task[2]} ${task[3]} -  ${task[4]}</li>
+                                    % if (task[2] != ' _ '):
+                                        <li> ${task[0]} - ${task[1]} -  ${task[2]} ${task[3]} -  ${task[4]}</li>
+                                    %else:
+                                        <li> ${task[0]} - ${task[1]} -  ${task[2]} -  ${task[4]}</li>
+                                    % endif
                                 % endfor
                             % else:
                                 <li></li>
