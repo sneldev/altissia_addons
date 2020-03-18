@@ -5,12 +5,28 @@ from odoo.exceptions import ValidationError
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
+    active = fields.Boolean('Active', default=True,
+                            help="If the active field is set to False, it will allow you to hide the invoices canceled .")
     delivery_contact_id = fields.Many2one('res.partner', domain=[('is_company','=',False)], string="Delivery contact")
     use_parent_address = fields.Boolean(
         'Use Customer Address for Delivery',
         help="Select this if you want to use customer's address  information as delivery address",
         default=True
     )
+
+    @api.multi
+    def write(self, vals):
+        for inv in self:
+            if(inv and inv.state == 'cancel'):
+                if('active' in vals):
+                    if( vals.get('active') == False):
+                        for inv_line in inv.invoice_line_ids:
+                            inv_line.active = False
+                    else:
+                        inv_lines = self.env['account.invoice.line'].search([('invoice_id', '=', inv.id), ('active', '=', False)])
+                        for inv_line in inv_lines:
+                            inv_line.active = True
+        return super(AccountInvoice, self).write(vals)
 
     @api.depends('partner_id')
     def _get_company_id(self):
@@ -19,6 +35,10 @@ class AccountInvoice(models.Model):
 
     partner_company = fields.Many2one('res.partner',string="Customer Company",compute='_get_company_id')
 
+class AccountInvoiceLine(models.Model):
+    _inherit = 'account.invoice.line'
+
+    active = fields.Boolean('Active', default=True, help="disactivated invoice line if invoice is disactive .")
 
 class AccountJournal(models.Model):
     _inherit = "account.journal"

@@ -56,11 +56,18 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
+                  <xpath expr="//notebook" position="before">
+                      <group>
+                            <field name="active" states="cancel"/>
+                      </group>
+                </xpath>
+
                 <field name="invoice_line_ids" position="replace">
                     <field name="invoice_line_ids" nolabel="1" widget="one2many_list" mode="tree,kanban" context="{'type': type, 'journal_id': journal_id, 'default_invoice_id': id}">
                         <tree string="Invoice Lines" editable="bottom">
                             <field name="sequence" widget="handle"/>
                             <field name="product_id"/>
+                            <field name="active"/>
                             <field name="origin" invisible="1"/>
                             <field name="name"/>
                             <field name="company_id" invisible="1"/>
