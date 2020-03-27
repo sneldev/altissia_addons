@@ -59,7 +59,7 @@
                         </div>
 
                         % if ctx.get('count_last_7_days_meeting_not_new_opp'):
-                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #51679c;">With existing opportunities (# ctx['count_last_7_days_meeting_not_new_opp'])</div>
+                            <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #51679c;">With existing opportunities (# ${ctx['count_last_7_days_meeting_not_new_opp']})</div>
                         % else:
                             <div style="font-family: Poppins; font-size: 20px; font-weight: 700;color: #51679c;">With existing opportunities </div>
                         % endif
