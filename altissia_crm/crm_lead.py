@@ -96,7 +96,7 @@ class CrmLead(Model):
 
         # Coming week
         # 1. MEETINGS PLANNED( # )
-        for meeting in self.env['calendar.event'].search([('user_id', '=', self.env.uid)]):
+        for meeting in self.env['calendar.event'].search([('user_id', '=', self.env.uid), ('type', '=', 'opportunity')]):
             meeting_date = fields.Date.from_string(meeting.start)
             if date.today() <= meeting_date <= date.today() + timedelta(days=7):
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
