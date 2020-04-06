@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<record id="lead_wizard_view" model="ir.ui.view">
+			<field name="name">Import Lead</field>
+			<field name="model">import.lead.wizard</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<field name="select_option" widget="radio"/>
+						<field name="lead_file"/>
+					</group>
+					<footer>
+						<button string="Import Leads" name="import_file" class="oe_highlight" type="object"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="lead_wizard_action" model="ir.actions.act_window">
+			<field name="name">Import Leads</field>
+			<field name="res_model">import.lead.wizard</field>
+			<field name="target">new</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+		</record>
+
+		<menuitem id="menu_lead_import"
+			name="Import Leads"
+			string="Import Leads"
+			action="lead_wizard_action"
+			parent="sales_team.menu_sales"
+			sequence="2"/>
+		
+	</data>
+</odoo>
