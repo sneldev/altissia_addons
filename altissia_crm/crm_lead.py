@@ -27,6 +27,8 @@ from datetime import datetime, date, timedelta, time
 class CrmLead(Model):
     _inherit = 'crm.lead'
 
+    date_action = fields.Datetime('Next Activity Time', index=True)
+
     @api.multi
     def get_mail_compose_message(self):
         last_7_days_lead = []
@@ -53,7 +55,7 @@ class CrmLead(Model):
 
         # 2.MEETINGS OBTAINED(#) ==> With new opportunities (#)
         for meeting in self.env['calendar.event'].search(
-                [('user_id', '=', self.env.uid), ('opportunity_id', 'in', meeting_with_new_opp_ids)]):
+                [('user_id', '=', self.env.uid), ('opportunity_id', 'in', meeting_with_new_opp_ids), ('is_activity', '=', True)]):
             meeting_date = fields.Date.from_string(meeting.start)
             if date.today() + timedelta(days=-7) <= meeting_date < date.today():
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
@@ -61,7 +63,7 @@ class CrmLead(Model):
         count_last_7_days_meeting_new_opp = len(last_7_days_meeting_new_opp)
 
         # 2.MEETINGS OBTAINED(#) ==> With existing opportunities (#)
-        for meeting in self.env['calendar.event'].search([('user_id', '=', self.env.uid), ('opportunity_id', 'in', meeting_with_not_new_opp_ids)]):
+        for meeting in self.env['calendar.event'].search([('user_id', '=', self.env.uid), ('opportunity_id', 'in', meeting_with_not_new_opp_ids), ('is_activity', '=', True)]):
             meeting_date = fields.Date.from_string(meeting.start)
             if date.today() + timedelta(days=-7) <= meeting_date < date.today():
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
@@ -71,7 +73,7 @@ class CrmLead(Model):
         count_last_7_days_meeting_opps = count_last_7_days_meeting_new_opp + count_last_7_days_meeting_not_new_opp
 
         # 3. MEETINGS ATTENDED( # )
-        for meeting in self.env['calendar.event'].search([('user_id', '=', self.env.uid), ('opportunity_id','in',meeting_with_opp_ids)]):
+        for meeting in self.env['calendar.event'].search([('user_id', '=', self.env.uid), ('opportunity_id', 'in', meeting_with_opp_ids), ('is_activity', '=', True)]):
             meeting_date = fields.Date.from_string(meeting.start)
             if date.today() + timedelta(days=-7) <= meeting_date < date.today():
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
@@ -96,7 +98,7 @@ class CrmLead(Model):
 
         # Coming week
         # 1. MEETINGS PLANNED( # )
-        for meeting in self.env['calendar.event'].search([('user_id', '=', self.env.uid), ('type', '=', 'opportunity')]):
+        for meeting in self.env['calendar.event'].search([('user_id', '=', self.env.uid), ('opportunity_id', 'in', meeting_with_opp_ids), ('is_activity', '=', True)]):
             meeting_date = fields.Date.from_string(meeting.start)
             if date.today() <= meeting_date <= date.today() + timedelta(days=7):
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
