@@ -30,8 +30,7 @@ class CrmActivityLog(models.TransientModel):
     @api.multi
     def action_log_and_schedule(self):
         res = super(CrmActivityLog, self).action_log_and_schedule()
-        print("self._context",self._context)
-        print("self.env.context",self.env.context)
+
         for log in self:
             old_meeting_activity = self.env['calendar.event'].search([('is_activity', '=', True), ('opportunity_id', '=', log.lead_id.id)])
 
