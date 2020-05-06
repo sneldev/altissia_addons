@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_create_meeting_activity" model="ir.actions.act_window">
+        <field name="name">Create activity meeting</field>
+        <field name="res_model">activity.meeting.wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record model="ir.ui.view" id="activity_in_meeting_wizard_form">
+            <field name="name">activity.meeting.wizard.form</field>
+            <field name="model">activity.meeting.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Create activity meeting">
+                   <p>Click on the button below to create the missing meetings from the old Next activity of opportunities </p>
+                    <footer>
+                        <button string="Add meetings from old activities" name="transform_old_activity_in_meeting" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    <menuitem name="Update meeting ativity" action="action_create_meeting_activity"
+    id="menu_update_meeting_activity" parent="sales_team.menu_base_partner"
+    sequence="7"/>
+    </data>
+</odoo>
