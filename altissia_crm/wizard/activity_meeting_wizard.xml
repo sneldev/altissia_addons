@@ -16,7 +16,7 @@
             <field name="model">activity.meeting.wizard</field>
             <field name="arch" type="xml">
                 <form string="Create activity meeting">
-                   <p>Click on the boutton <strong>Create meeting activity</strong> to create meetings from the old Next activity of opportunities </p>
+                   <p>Click on the button below to create the missing meetings from the old Next activity of opportunities </p>
                     <footer>
                         <button string="Add meetings from old activities" name="transform_old_activity_in_meeting" type="object" class="btn-primary"/>
                         <button string="Cancel" class="btn-default" special="cancel" />
