@@ -28,7 +28,7 @@
     "data": [
         "data/crm_sale_report_mail_template.xml",
         "wizard/mail_compose_message_view.xml",
-        "wizard/activity_meeting_wizard.xml",
+        # "wizard/activity_meeting_wizard.xml",
         "view/leads.xml",
         "view/opportunity.xml",
         "view/res_partner.xml",
