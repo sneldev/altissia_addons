@@ -48,7 +48,7 @@ class CrmLead(Model):
         # 1. NEW LEADS (#)
         for lead in self.env['crm.lead'].search([('user_id','=', self.env.uid), ('type', '=', 'lead')]):
             create_date = fields.Date.from_string(lead.create_date)
-            if date.today() + timedelta(days=-7) <= create_date < date.today():
+            if date.today() + timedelta(days=-7) <= create_date <= date.today():
                 lead_create_date = create_date.strftime('%d/%m/%y')
                 last_7_days_lead.append((lead_create_date or ' _ ', lead.partner_id.name or ' _ ', lead.name or ' _ '))
         count_last_7_days_lead = len(last_7_days_lead)
@@ -57,7 +57,7 @@ class CrmLead(Model):
         for meeting in self.env['calendar.event'].search(
                 [('user_id', '=', self.env.uid), ('opportunity_id', 'in', meeting_with_new_opp_ids), ('is_activity', '=', True)]):
             meeting_date = fields.Date.from_string(meeting.start)
-            if date.today() + timedelta(days=-7) <= meeting_date < date.today():
+            if date.today() + timedelta(days=-7) <= meeting_date <= date.today():
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
                 last_7_days_meeting_new_opp.append((lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ '))
         count_last_7_days_meeting_new_opp = len(last_7_days_meeting_new_opp)
@@ -65,7 +65,7 @@ class CrmLead(Model):
         # 2.MEETINGS OBTAINED(#) ==> With existing opportunities (#)
         for meeting in self.env['calendar.event'].search([('user_id', '=', self.env.uid), ('opportunity_id', 'in', meeting_with_not_new_opp_ids), ('is_activity', '=', True)]):
             meeting_date = fields.Date.from_string(meeting.start)
-            if date.today() + timedelta(days=-7) <= meeting_date < date.today():
+            if date.today() + timedelta(days=-7) <= meeting_date <= date.today():
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
                 last_7_days_meeting_not_new_opp.append((lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ '))
         count_last_7_days_meeting_not_new_opp = len(last_7_days_meeting_not_new_opp)
@@ -75,7 +75,7 @@ class CrmLead(Model):
         # 3. MEETINGS ATTENDED( # )
         for meeting in self.env['calendar.event'].search([('user_id', '=', self.env.uid), ('opportunity_id', 'in', meeting_with_opp_ids), ('is_activity', '=', True)]):
             meeting_date = fields.Date.from_string(meeting.start)
-            if date.today() + timedelta(days=-7) <= meeting_date < date.today():
+            if date.today() + timedelta(days=-7) <= meeting_date <= date.today():
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
                 last_7_days_meeting.append((lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ ', meeting.name or ' _ '))
         count_last_7_days_meeting = len(last_7_days_meeting)
@@ -83,7 +83,7 @@ class CrmLead(Model):
         # 4. PROPOSALS SENT( # )
         for lead in self.env['crm.lead'].search([('user_id', '=', self.env.uid), ('stage_id', '=', stage_prop_id), ('planned_revenue', '!=', 0), ('type', '=', 'opportunity')]):
             create_date = fields.Date.from_string(lead.create_date)
-            if date.today() + timedelta(days=-7) <= create_date < date.today():
+            if date.today() + timedelta(days=-7) <= create_date <= date.today():
                 lead_create_date = create_date.strftime('%d/%m/%y')
                 last_7_days_prop_lead.append((lead_create_date or ' _ ', lead.name or ' _ ', lead.planned_revenue or ' _ ', lead.company_currency.symbol or ' _ '))
         count_last_7_days_prop_lead = len(last_7_days_prop_lead)
@@ -91,7 +91,7 @@ class CrmLead(Model):
         # 5. INVOICES( # )
         for inv in self.env['account.invoice'].search([('create_uid','=',self.env.uid)]):
             create_date = fields.Date.from_string(inv.create_date)
-            if date.today() + timedelta(days=-7) <= create_date < date.today():
+            if date.today() + timedelta(days=-7) <= create_date <= date.today():
                 inv_create_date = create_date.strftime('%d/%m/%y')
                 last_7_days_invoices.append((inv_create_date or ' _ ', inv.partner_id.name or ' _ ', inv.amount_untaxed_signed or ' _ ', inv.currency_id.symbol or ' _ '))
         count_last_7_days_invoices = len(last_7_days_invoices)
@@ -100,7 +100,7 @@ class CrmLead(Model):
         # 1. MEETINGS PLANNED( # )
         for meeting in self.env['calendar.event'].search([('user_id', '=', self.env.uid), ('opportunity_id', 'in', meeting_with_opp_ids), ('is_activity', '=', True)]):
             meeting_date = fields.Date.from_string(meeting.start)
-            if date.today() <= meeting_date <= date.today() + timedelta(days=7):
+            if date.today() < meeting_date <= date.today() + timedelta(days=7):
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
                 next_7_days_meeting.append(
                     (lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ ', meeting.name or ' _ '))
@@ -109,7 +109,7 @@ class CrmLead(Model):
         # 2. TASKS PLANNED( # )
         for task in self.env['crm.lead'].search([('type', '=', 'opportunity'), ('date_action', '!=', False), ('user_id','=', self.env.uid)]):
             date_action = fields.Date.from_string(task.date_action)
-            if date.today() <= date_action <= date.today() + timedelta(days=7):
+            if date.today() < date_action <= date.today() + timedelta(days=7):
                 task_date_action = date_action.strftime('%d/%m/%y')
                 next_7_days_tasks.append((task_date_action or ' _ ', task.name or ' _ ', task.planned_revenue or ' _ ', task.company_currency.symbol or ' _ ',  task.title_action or ' _ '))
         count_next_7_days_tasks = len(next_7_days_tasks)
