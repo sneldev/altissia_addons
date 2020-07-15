@@ -22,3 +22,4 @@ import calendar_event
 import res_partner
 import crm_lead
 import mail
+import expected_closing_year

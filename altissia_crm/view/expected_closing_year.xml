@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <record id="expected_closing_year_form_view" model="ir.ui.view">
+            <field name="name">Expected closing year Form</field>
+            <field name="model">expected.closing.year</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="year"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="expected_closing_year_tree_view" model="ir.ui.view">
+            <field name="name">Expected closing year tree</field>
+            <field name="model">expected.closing.year</field>
+            <field name="arch" type="xml">
+                <tree string="Expected closing year">
+                    <field name="year"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_expected_closing_year" model="ir.actions.act_window">
+            <field name="name">Expected closing year</field>
+            <field name="res_model">expected.closing.year</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="expected_closing_year_tree_view"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click to create a new year closing expected.</p>
+            </field>
+        </record>
+
+        <menuitem
+            id="menu_expected_closing_year"
+            action="action_expected_closing_year"
+            parent="crm.menu_crm_config_lead"
+            sequence="5" groups="base.group_user"/>
+
+    </data>
+</odoo>

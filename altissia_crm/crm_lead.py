@@ -28,6 +28,43 @@ class CrmLead(Model):
     _inherit = 'crm.lead'
 
     date_action = fields.Datetime('Next Activity Time', index=True)
+    expct_closing_year_id = fields.Many2one('expected.closing.year', string='Expected closing year')
+    date_deadline = fields.Date('Expected Closing', help="Estimate of the date on which the opportunity will be won.")
+
+    @api.onchange('expct_closing_year_id')
+    def on_change_expct_closing_year_id(self):
+        for lead in self:
+            if(lead.expct_closing_year_id and lead.expct_closing_year_id.year):
+                lead.date_deadline = datetime(lead.expct_closing_year_id.year, 12, 31)
+
+    @api.model
+    def _expected_closing_compute_ancient(self):
+
+        lead_ids =self.env['crm.lead'].search([('date_deadline', '!=', False), ('expct_closing_year_id', '=', False)])
+        year_now = date.today().year
+        expct_closing_year_old_active_ids = self.env['expected.closing.year'].search(
+            [('year', '<', year_now)])
+        for year_expect in expct_closing_year_old_active_ids:
+            year_expect.active = False
+
+        for lead in lead_ids:
+            dt_to = datetime.strptime(lead.date_deadline, "%Y-%m-%d")
+            date_deadline_year = dt_to.strftime('%Y')
+
+            if(date_deadline_year):
+                expct_closing_year_active_ids = self.env['expected.closing.year'].search([('year', '=', date_deadline_year), ('active', '=', True)])
+                expct_closing_year_inactive_ids = self.env['expected.closing.year'].search([('year', '=', date_deadline_year), ('active', '=', False)])
+
+                if expct_closing_year_active_ids and expct_closing_year_active_ids[0]:
+                    lead.expct_closing_year_id = expct_closing_year_active_ids[0].id
+                elif(expct_closing_year_inactive_ids and expct_closing_year_inactive_ids[0]):
+                    lead.expct_closing_year_id = expct_closing_year_inactive_ids[0].id
+                else:
+                    expected_closing_year = self.env['expected.closing.year'].create({
+                        'year': date_deadline_year,
+                        'active': True,
+                    })
+                    lead.expct_closing_year_id = expected_closing_year.id
 
     @api.multi
     def get_mail_compose_message(self):

@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+          <record id="action_expected_closing_ancient_year" model="ir.cron">
+            <field name="name">Cron inactive Ancient expected closing year </field>
+            <field name="interval_number">12</field>
+            <field name="interval_type">months</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall">2020-12-31 23:00:00</field>
+            <field name="doall" eval="False"/>
+            <field name="model" eval="'expected.closing.year'"/>
+            <field name="function" eval="'action_cron_expected_closing_ancient_year'"/>
+            <field name="args" eval="'()'"/>
+        </record>
+    </data>
+</odoo>
