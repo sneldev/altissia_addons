@@ -41,11 +41,6 @@ class CrmLead(Model):
     def _expected_closing_compute_ancient(self):
 
         lead_ids =self.env['crm.lead'].search([('date_deadline', '!=', False), ('expct_closing_year_id', '=', False)])
-        year_now = date.today().year
-        expct_closing_year_old_active_ids = self.env['expected.closing.year'].search(
-            [('year', '<', year_now)])
-        for year_expect in expct_closing_year_old_active_ids:
-            year_expect.active = False
 
         for lead in lead_ids:
             dt_to = datetime.strptime(lead.date_deadline, "%Y-%m-%d")
@@ -65,6 +60,12 @@ class CrmLead(Model):
                         'active': True,
                     })
                     lead.expct_closing_year_id = expected_closing_year.id
+
+        year_now = date.today().year
+        expct_closing_year_old_active_ids = self.env['expected.closing.year'].search(
+            [('year', '<', year_now)])
+        for year_expect in expct_closing_year_old_active_ids:
+            year_expect.active = False
 
     @api.multi
     def get_mail_compose_message(self):
