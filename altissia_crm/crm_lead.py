@@ -21,8 +21,8 @@
 from openerp.fields import Char
 from openerp.fields import Boolean
 from openerp.models import Model, TransientModel, api, _
-from openerp import fields
-from datetime import datetime, date, timedelta, time
+from odoo import fields, models, tools
+from datetime import datetime, timedelta, date
 
 class CrmLead(Model):
     _inherit = 'crm.lead'
@@ -66,6 +66,35 @@ class CrmLead(Model):
             [('year', '<', year_now)])
         for year_expect in expct_closing_year_old_active_ids:
             year_expect.active = False
+
+    @api.model
+    def retrieve_sales_dashboard(self):
+        """ Fetch data to setup Sales Dashboard """
+        result = super(CrmLead, self).retrieve_sales_dashboard()
+
+        opportunities = self.search([('type', '=', 'opportunity'), ('user_id', '=', self._uid)])
+        result['activity']['today'] = 0
+        result['activity']['next_7_days'] = 0
+        result['activity']['overdue'] = 0
+        for opp in opportunities:
+            # Next activities
+            if opp.next_activity_id and opp.date_action:
+
+                date_action_time =datetime.strptime(opp.date_action, "%Y-%m-%d %H:%M:%S")
+                today_inf = datetime.strptime(((date.today() - timedelta(days=1)).strftime('%Y-%m-%d 23:00:00')), "%Y-%m-%d %H:%M:%S")
+                today_sup = datetime.strptime(date.today().strftime('%Y-%m-%d 22:59:59'), "%Y-%m-%d %H:%M:%S")
+                today_next_week = datetime.strptime(((date.today() + timedelta(days=7)).strftime('%Y-%m-%d 22:59:59')), "%Y-%m-%d %H:%M:%S")
+
+                if today_inf <= date_action_time <= today_sup:
+                    result['activity']['today'] += 1
+
+                if today_inf <= date_action_time <= today_next_week:
+                    result['activity']['next_7_days'] += 1
+
+                if date_action_time < today_inf:
+                    result['activity']['overdue'] += 1
+
+        return result
 
     @api.multi
     def get_mail_compose_message(self):
