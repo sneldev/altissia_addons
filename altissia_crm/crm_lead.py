@@ -126,10 +126,7 @@ class CrmLead(Model):
             meeting_date = fields.Date.from_string(meeting.start)
             if date.today() + timedelta(days=-7) <= meeting_date <= date.today():
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
-                last_7_days_meeting_new_opp.append((lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ ',
-                                                    meeting.opportunity_id.planned_revenue or ' _ ',
-                                                    meeting.opportunity_id.company_currency.symbol or ' _ '))
-
+                last_7_days_meeting_new_opp.append((lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ '))
         count_last_7_days_meeting_new_opp = len(last_7_days_meeting_new_opp)
 
         # 2.MEETINGS OBTAINED(#) ==> With existing opportunities (#)
@@ -137,10 +134,7 @@ class CrmLead(Model):
             meeting_date = fields.Date.from_string(meeting.start)
             if date.today() + timedelta(days=-7) <= meeting_date <= date.today():
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
-                last_7_days_meeting_not_new_opp.append((lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ ',
-                                                        meeting.opportunity_id.planned_revenue or ' _ ',
-                                                        meeting.opportunity_id.company_currency.symbol or ' _ '))
-
+                last_7_days_meeting_not_new_opp.append((lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ '))
         count_last_7_days_meeting_not_new_opp = len(last_7_days_meeting_not_new_opp)
 
         count_last_7_days_meeting_opps = count_last_7_days_meeting_new_opp + count_last_7_days_meeting_not_new_opp
@@ -150,9 +144,7 @@ class CrmLead(Model):
             meeting_date = fields.Date.from_string(meeting.start)
             if date.today() + timedelta(days=-7) <= meeting_date <= date.today():
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
-                last_7_days_meeting.append((lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ ', meeting.name or ' _ ',
-                                            meeting.opportunity_id.planned_revenue or ' _ ',
-                                            meeting.opportunity_id.company_currency.symbol or ' _ '))
+                last_7_days_meeting.append((lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ ', meeting.name or ' _ '))
         count_last_7_days_meeting = len(last_7_days_meeting)
 
         # 4. PROPOSALS SENT( # )
@@ -178,9 +170,7 @@ class CrmLead(Model):
             if date.today() < meeting_date <= date.today() + timedelta(days=7):
                 lead_meeting_date = meeting_date.strftime('%d/%m/%y')
                 next_7_days_meeting.append(
-                    (lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ ', meeting.name or ' _ ',
-                     meeting.opportunity_id.planned_revenue or ' _ ',
-                     meeting.opportunity_id.company_currency.symbol or ' _ '))
+                    (lead_meeting_date or ' _ ', meeting.opportunity_id.name or ' _ ', meeting.name or ' _ '))
         count_next_7_days_meeting = len(next_7_days_meeting)
 
         # 2. TASKS PLANNED( # )

@@ -50,11 +50,7 @@
                         <ul>
                             % if ctx.get('last_7_days_meeting_new_opp'):
                                 % for meeting in ctx['last_7_days_meeting_new_opp']:
-                                    % if (meeting[2] != ' _ '):
-                                        <li> ${meeting[0]} - ${meeting[1]} -  ${meeting[2]} ${meeting[3]}</li>
-                                    %else:
-                                        <li> ${meeting[0]} - ${meeting[1]}</li>
-                                    % endif
+                                    <li> ${meeting[0]} - ${meeting[1]}</li>
                                 % endfor
                             % else:
                                 <li></li>
@@ -72,11 +68,7 @@
                         <ul>
                             % if ctx.get('last_7_days_meeting_not_new_opp'):
                                 % for meeting in ctx['last_7_days_meeting_not_new_opp']:
-                                    % if (meeting[2] != ' _ '):
-                                        <li> ${meeting[0]} - ${meeting[1]} - ${meeting[2]} ${meeting[3]}</li>
-                                    %else:
-                                        <li> ${meeting[0]} - ${meeting[1]}</li>
-                                    % endif
+                                    <li> ${meeting[0]} - ${meeting[1]}</li>
                                 % endfor
                             % else:
                                 <li></li>
@@ -94,11 +86,7 @@
                         <ul>
                             % if ctx.get('last_7_days_meeting'):
                                 % for meeting in ctx['last_7_days_meeting']:
-                                    % if (meeting[3] != ' _ '):
-                                        <li> ${meeting[0]} - ${meeting[1]} - ${meeting[2]} - ${meeting[3]} ${meeting[4]}</li>
-                                    %else:
-                                        <li> ${meeting[0]} - ${meeting[1]} - ${meeting[2]}</li>
-                                    % endif
+                                    <li> ${meeting[0]} - ${meeting[1]} -  ${meeting[2]}</li>
                                 % endfor
                             % else:
                                 <li></li>
@@ -162,11 +150,7 @@
                         <ul>
                             % if ctx.get('next_7_days_meeting'):
                                 % for meeting in ctx['next_7_days_meeting']:
-                                     % if (meeting[3] != ' _ '):
-                                        <li> ${meeting[0]} - ${meeting[1]} - ${meeting[2]} - ${meeting[3]} ${meeting[4]}</li>
-                                    %else:
-                                        <li> ${meeting[0]} - ${meeting[1]} - ${meeting[2]}</li>
-                                    % endif
+                                    <li> ${meeting[0]} - ${meeting[1]} - ${meeting[2]}</li>
                                 % endfor
                             % else:
                                 <li></li>
