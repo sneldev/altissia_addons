@@ -99,6 +99,7 @@ class CrmLead(Model):
     @api.multi
     def get_mail_compose_message(self):
         last_7_days_lead = []
+        last_7_days_new_clients = []
         last_7_days_meeting_new_opp = []
         last_7_days_meeting_not_new_opp = []
         last_7_days_meeting = []
@@ -108,6 +109,8 @@ class CrmLead(Model):
         next_7_days_tasks = []
         stage_new_id = self.env.ref('crm.stage_lead1').id
         stage_prop_id = self.env.ref('crm.stage_lead3').id
+        stage_won_id = self.env.ref('crm.stage_lead4').id
+        stage_won_no_vol_id = self.env.ref('__export__.crm_case_stage_9').id
         meeting_with_new_opp_ids = self.env['crm.lead'].search([('stage_id', '=', stage_new_id), ('type', '=', 'opportunity')]).ids
         meeting_with_not_new_opp_ids = self.env['crm.lead'].search([('stage_id', '!=', stage_new_id), ('type', '=', 'opportunity')]).ids
         meeting_with_opp_ids = self.env['crm.lead'].search([('type', '=', 'opportunity')]).ids
@@ -119,6 +122,15 @@ class CrmLead(Model):
                 lead_create_date = create_date.strftime('%d/%m/%y')
                 last_7_days_lead.append((lead_create_date or ' _ ', lead.partner_id.name or ' _ ', lead.name or ' _ '))
         count_last_7_days_lead = len(last_7_days_lead)
+
+        # 1. NEW Clients (#)
+        for new_client in self.env['crm.lead'].search([('user_id', '=', self.env.uid), '|', ('stage_id', '=', stage_won_id),
+                                                         ('stage_id', '=', stage_won_no_vol_id)]):
+            create_date = fields.Date.from_string(new_client.create_date)
+            if date.today() + timedelta(days=-7) <= create_date <= date.today():
+                new_client_create_date = create_date.strftime('%d/%m/%y')
+                last_7_days_new_clients.append((new_client_create_date or ' _ ', new_client.partner_id.name or ' _ ', new_client.name or ' _ '))
+        count_last_7_days_new_clients = len(last_7_days_new_clients)
 
         # 2.MEETINGS OBTAINED(#) ==> With new opportunities (#)
         for meeting in self.env['calendar.event'].search(
@@ -209,6 +221,8 @@ class CrmLead(Model):
             'sale_team': self.env.user.sale_team_id.name,
             'last_7_days_lead': last_7_days_lead,
             'count_last_7_days_lead': count_last_7_days_lead,
+            'last_7_days_new_clients': last_7_days_new_clients,
+            'count_last_7_days_new_clients': count_last_7_days_new_clients,
             'last_7_days_meeting': last_7_days_meeting,
             'count_last_7_days_meeting': count_last_7_days_meeting,
             'last_7_days_meeting_new_opp': last_7_days_meeting_new_opp,
