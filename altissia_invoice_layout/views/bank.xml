@@ -10,6 +10,9 @@
                 <field name="company_id" position="after">
                     <field name="footer"/>
                 </field>
+                <field name="acc_number" position="after">
+                    <field name="clabe"/>
+                </field>
             </field>
         </record>
 

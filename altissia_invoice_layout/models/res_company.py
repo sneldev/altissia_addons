@@ -18,3 +18,4 @@ class Company(models.Model):
     qst = fields.Char("QST - TVQ")
     
     canadian_specific = fields.Boolean("Canandian Specific", default=False)
+    mexicain_specific = fields.Boolean("Mexicain Specific", default=False)
