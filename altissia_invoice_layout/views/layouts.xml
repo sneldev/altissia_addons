@@ -91,8 +91,8 @@
                                             <br/>
                                             <strong>Address:</strong><span t-field="b.acc_number"/>
                                             <strong>Account:</strong><span t-field="b.acc_number"/>
-                                            <strong>SWIFT:</strong><span style="padding-right: 10px;" t-field="b.bank_bic"/>  
-                                            <span>for further credit Account Number: 880001164</span>
+                                            <strong>SWIFT:</strong><span style="padding-right: 10px;" t-field="b.bank_bic"/><br/>  
+                                            <span>for further credit Account Number: 880001164</span><br/>
                                             <span>Customer’s Name: ALTISSIA PRESTACAO DE SERVICOS EDUCACIONAIS LTDA</span>
                                         </t>
                                     </t>
