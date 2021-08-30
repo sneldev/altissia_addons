@@ -67,7 +67,7 @@
                                 Payment instructions:<br/>
                                 <p t-foreach="company.bank_ids" t-as="b">
                                     <t t-if="b.footer">
-                                        <t t-if="not company.canadian_specific and not company.mexicain_specific">
+                                        <t t-if="(not company.canadian_specific and not company.mexicain_specific) and not company.brazilian_specific">
                                             <strong>Bank:</strong><span style="padding-right: 10px;" t-field="b.bank_name"/>
                                             <strong>IBAN:</strong><span style="padding-right: 10px;" t-field="b.acc_number"/>
                                             <strong>BIC:</strong><span t-field="b.bank_bic"/>
@@ -78,6 +78,14 @@
                                             <strong>ACCT#:</strong><span t-field="b.acc_number"/>
                                         </t>
                                         <t t-if="company.mexicain_specific">
+                                            <strong>Bank:</strong><span style="padding-right: 10px;" t-field="b.bank_name"/>
+                                            <br/>
+                                            <br/>
+                                            <strong>SWIFT:</strong><span style="padding-right: 10px;" t-field="b.bank_bic"/>
+                                            <strong>Account:</strong><span t-field="b.acc_number"/>
+                                            <strong>Clabe:</strong><span t-field="b.clabe"/>
+                                        </t>
+                                        <t t-if="company.brazilian_specific">
                                             <strong>Bank:</strong><span style="padding-right: 10px;" t-field="b.bank_name"/>
                                             <br/>
                                             <br/>

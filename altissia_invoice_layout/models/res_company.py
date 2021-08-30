@@ -19,3 +19,4 @@ class Company(models.Model):
     
     canadian_specific = fields.Boolean("Canandian Specific", default=False)
     mexicain_specific = fields.Boolean("Mexicain Specific", default=False)
+    brazilian_specific = fields.Boolean("Brazilian Specific", default=False)

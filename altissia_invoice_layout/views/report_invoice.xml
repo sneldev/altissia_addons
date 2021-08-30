@@ -61,9 +61,11 @@
                     <div t-field="company.partner_id" t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
                     <span t-if="company.vat"><strong>VAT:</strong> <span t-field="company.vat_display"/></span>
                     <span t-if="company.gst_hst"><strong>GST/HST - TPS/TVH:</strong> <span t-field="company.gst_hst"/><br/></span>
-                    <span t-if="company.qst"><strong>QST - TVQ:</strong> <span t-field="company.qst"/></span><br/>                    
-                    <span><strong>Email:</strong> accounting@altissia.com</span><br/>
-                    <span><strong>Phone:</strong> +32(0)10.65.72.61</span><br/>
+                    <span t-if="company.qst"><strong>QST - TVQ:</strong> <span t-field="company.qst"/></span><br/>
+                    <span t-if="company.brazilian_specific"><strong>Email:</strong> accountingbrazil@altissia.org</span><br/>
+                    <span t-if="company.brazilian_specific"><strong>Phone:</strong> +55-11-4794-3311</span><br/>
+                    <span t-if="not company.brazilian_specific"><strong>Email:</strong> accounting@altissia.com</span><br/>
+                    <span t-if="not company.brazilian_specific"><strong>Phone:</strong> +32(0)10.65.72.61</span><br/>
                 </div>
                 <!-- customer -->
                 <div class="col-xs-5 col-xs-offset-1">
