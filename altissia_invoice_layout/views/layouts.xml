@@ -93,7 +93,7 @@
                                             <t t-if="b.bank_id.street2">
                                             <span t-field="b.bank_id.street2"/><br/>
                                             </t>
-                                            <span t-field="b.bank_id.city"/>,<span t-field="b.bank_id.state"/><span t-field="b.bank_id.zip "/><br/>
+                                            <span t-field="b.bank_id.city"/>,<span t-field="b.bank_id.state"/><span t-field="b.bank_id.zip"/><br/>
                                             <strong>Account:</strong><span t-field="b.acc_number"/>
                                             <strong>SWIFT:</strong><span style="padding-right: 10px;" t-field="b.bank_bic"/><br/>  
                                             <span>for further credit Account Number: 880001164</span><br/>
