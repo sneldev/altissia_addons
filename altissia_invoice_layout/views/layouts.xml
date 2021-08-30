@@ -88,10 +88,9 @@
                                         <t t-if="company.brazilian_specific">
                                             <strong>Bank:</strong><span style="padding-right: 10px;" t-field="b.bank_name"/>
                                             <br/>
-                                            <br/>
-                                            <strong>Address:</strong><span t-field="b.bank_id.street"/><br/>
+                                            <strong>Address:</strong><span t-field="b.bank_id.street"/>
                                             <t t-if="b.bank_id.street2">
-                                            <span t-field="b.bank_id.street2"/><br/>
+                                            <span t-field="b.bank_id.street2"/>
                                             </t>
                                             <span t-field="b.bank_id.city"/>,<span t-field="b.bank_id.state"/><span t-field="b.bank_id.zip"/><br/>
                                             <strong>Account:</strong><span t-field="b.acc_number"/>
