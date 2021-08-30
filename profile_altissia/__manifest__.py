@@ -25,7 +25,7 @@
     "website": "http://www.eezee-it.com",
     "description": """Provide a profile for Altissia
     This module install the module\"Altissia Customization on CRM module\"""",
-    "depends": ['altissia_crm', 'altissia_project', 'mass_editing'],
+    "depends": ['altissia_crm', 'altissia_project', 'mass_editing','altissia_invoice_layout'],
     'data': [
         'data/mass_editing_group.xml',
         'views/mass_editing_view.xml',
