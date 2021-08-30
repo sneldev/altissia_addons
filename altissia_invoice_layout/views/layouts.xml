@@ -88,10 +88,12 @@
                                         <t t-if="company.brazilian_specific">
                                             <strong>Bank:</strong><span style="padding-right: 10px;" t-field="b.bank_name"/>
                                             <br/>
+                                            <strong>Address:</strong><span style="padding-right: 10px;" t-field="b.bank_street"/>
                                             <br/>
-                                            <strong>SWIFT:</strong><span style="padding-right: 10px;" t-field="b.bank_bic"/>
                                             <strong>Account:</strong><span t-field="b.acc_number"/>
-                                            <strong>Clabe:</strong><span t-field="b.clabe"/>
+                                            <strong>SWIFT:</strong><span style="padding-right: 10px;" t-field="b.bank_bic"/>  
+                                            <span>for further credit Account Number: 880001164</span><br/>
+                                            <span>Customer’s Name: ALTISSIA PRESTACAO DE SERVICOS EDUCACIONAIS LTDA</span>
                                         </t>
                                     </t>
                                 </p>
