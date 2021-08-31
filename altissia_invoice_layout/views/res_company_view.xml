@@ -13,6 +13,7 @@
                 <field name="currency_id" position="before">
                     <field name="canadian_specific"/>
                     <field name="mexicain_specific"/>
+                    <field name="brazilian_specific"/>
                     <field name="gst_hst"/>
                     <field name="qst"/>
                 </field>                  
